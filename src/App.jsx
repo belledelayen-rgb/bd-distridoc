@@ -14,6 +14,10 @@ export default function App() {
   const [documentsChoisis, setDocumentsChoisis] = useState([]);
   const [etape, setEtape] = useState('choix');
   const [message, setMessage] = useState(null);
+  // Les pièces jointes vivent HORS de la saisie : le brouillon sérialise
+  // « valeurs » en entier, et un PDF de plusieurs mégaoctets y deviendrait un
+  // fichier JSON illisible et démesuré.
+  const [piecesJointes, setPiecesJointes] = useState([]);
   const champFichier = useRef(null);
   const saisie = useSaisie();
 
@@ -21,6 +25,12 @@ export default function App() {
     setDocumentsChoisis((liste) =>
       liste.includes(id) ? liste.filter((x) => x !== id) : [...liste, id]
     );
+  };
+
+  const ajouterPiece = (piece) => setPiecesJointes((liste) => [...liste, piece]);
+
+  const retirerPiece = (id) => {
+    setPiecesJointes((liste) => liste.filter((piece) => piece.id !== id));
   };
 
   const allerA = (cle) => {
@@ -35,7 +45,12 @@ export default function App() {
       const { documentsChoisis: docs, valeurs } = await lireBrouillon(fichier);
       setDocumentsChoisis(docs);
       saisie.remplacerTout(valeurs);
-      setMessage({ type: 'ok', texte: 'Brouillon repris.' });
+      setMessage({
+        type: 'ok',
+        texte: piecesJointes.length > 0
+          ? 'Brouillon repris. Vos pièces jointes ont été conservées.'
+          : 'Brouillon repris. Les pièces jointes ne sont pas enregistrées dans un brouillon : redéposez-les si besoin.'
+      });
       allerA(docs.length > 0 ? 'saisie' : 'choix');
     } catch (erreur) {
       setMessage({ type: 'erreur', texte: erreur.message });
@@ -47,6 +62,7 @@ export default function App() {
     if (!window.confirm('Effacer toute la saisie en cours ?')) return;
     setDocumentsChoisis([]);
     saisie.toutEffacer();
+    setPiecesJointes([]);
     setMessage(null);
     allerA('choix');
   };
@@ -145,13 +161,20 @@ export default function App() {
             </p>
           </section>
 
-          <Formulaire documentsChoisis={documentsChoisis} saisie={saisie} />
+          <Formulaire
+            documentsChoisis={documentsChoisis}
+            saisie={saisie}
+            pieces={piecesJointes}
+            ajouterPiece={ajouterPiece}
+            retirerPiece={retirerPiece}
+          />
 
           <section className="bloc">
             <h2>Brouillon</h2>
             <p className="note">
               Le brouillon est un fichier enregistré sur votre appareil. Il ne passe
-              par aucun serveur.
+              par aucun serveur. Il retient vos renseignements, mais pas vos
+              pièces jointes : celles-ci seront à redéposer.
             </p>
             <div className="barre-boutons">
               <button

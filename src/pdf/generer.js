@@ -1,5 +1,6 @@
 import { construireDefinition } from './definition.js';
 import { construireDossier, titreDossier } from './dossier.js';
+import { assemblerDossier } from './pieces-jointes.js';
 
 let pdfMakePromesse = null;
 
@@ -39,9 +40,34 @@ export async function telechargerDocument(document, champs, valeurs, options = {
   pdfMake.createPdf(definition).download(nomFichier(document.titreFr));
 }
 
-/** Construit puis télécharge un dossier réunissant plusieurs documents. */
+/** Enregistre sur l'appareil un PDF déjà constitué en mémoire. */
+function telechargerOctets(octets, nom) {
+  const url = URL.createObjectURL(new Blob([octets], { type: 'application/pdf' }));
+  const lien = document.createElement('a');
+  lien.href = url;
+  lien.download = nom;
+  lien.click();
+  URL.revokeObjectURL(url);
+}
+
+/**
+ * Construit puis télécharge un dossier réunissant plusieurs documents.
+ *
+ * SANS PIÈCE JOINTE, le chemin reste exactement celui d'avant : pdfmake écrit
+ * le fichier lui-même et pdf-lib n'est pas même chargée. Le détour par pdf-lib
+ * n'a lieu que lorsqu'une pièce doit réellement être insérée.
+ */
 export async function telechargerDossier(idsDocuments, documents, champs, valeurs, options = {}) {
+  const pieces = options.pieces || [];
   const definition = construireDossier(idsDocuments, documents, champs, valeurs, options);
   const pdfMake = await chargerPdfMake();
-  pdfMake.createPdf(definition).download(nomFichier(titreDossier(valeurs)));
+  const nom = nomFichier(titreDossier(valeurs));
+
+  if (pieces.length === 0) {
+    pdfMake.createPdf(definition).download(nom);
+    return;
+  }
+
+  const octets = await pdfMake.createPdf(definition).getBuffer();
+  telechargerOctets(await assemblerDossier(octets, pieces), nom);
 }

@@ -130,134 +130,6 @@ body {
   color: var(--discret);
 }
 
-/* ── Formulaire ──────────────────────────────────────────── */
-
-.groupe { margin-bottom: 1.5rem; }
-.groupe:last-of-type { margin-bottom: 0; }
-
-.grille-champs {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-  gap: 0.7rem;
-  align-items: stretch;
-}
-
-.champ {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 0.55rem 0.65rem;
-  background: var(--fond);
-  border: 1px solid var(--trait);
-  border-radius: 6px;
-}
-
-.champ:focus-within {
-  border-color: var(--vert-vif);
-  background: #fff;
-}
-
-.champ-tableau {
-  grid-column: 1 / -1;
-  display: block;
-  background: transparent;
-  border: 0;
-  padding: 0;
-}
-
-/* Le libellé occupe deux lignes en toute circonstance : les cadres de
-   saisie se retrouvent ainsi à la même hauteur d'une colonne à l'autre. */
-.champ-libelle {
-  display: block;
-  font-weight: 600;
-  font-size: 0.85rem;
-  min-height: 2.6em;
-  line-height: 1.3;
-}
-
-.champ-libelle-en {
-  font-weight: 400;
-  font-size: 0.76rem;
-  font-style: italic;
-  color: var(--discret);
-}
-
-.champ-aide {
-  font-size: 0.73rem;
-  color: var(--discret);
-  margin: 0.35rem 0 0;
-  line-height: 1.35;
-  flex-grow: 1;
-}
-
-.unite { font-weight: 400; color: var(--discret); }
-.requis { color: var(--ambre); margin-left: 0.15rem; font-weight: 700; }
-
-.champ input[type="text"], .champ input[type="number"],
-.champ input[type="date"], .champ textarea, .champ select,
-.colonne input {
-  width: 100%;
-  margin-top: 0;
-  padding: 0.35rem 0.5rem;
-  border: 1px solid var(--trait);
-  border-radius: 5px;
-  background: #fff;
-  color: var(--encre);
-  font: inherit;
-  font-size: 0.95rem;
-}
-
-.champ textarea { resize: vertical; }
-
-.champ input:focus, .champ textarea:focus, .champ select:focus,
-.colonne input:focus {
-  outline: 2px solid var(--vert-vif);
-  outline-offset: 1px;
-  border-color: var(--vert-vif);
-}
-
-/* ── Tableaux à lignes répétables ────────────────────────── */
-
-.ligne-tableau {
-  border: 1px solid var(--trait);
-  border-left: 3px solid var(--ambre);
-  border-radius: 5px;
-  padding: 0.6rem 0.75rem;
-  margin-bottom: 0.6rem;
-  background: var(--ambre-clair);
-}
-
-.ligne-entete {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.4rem;
-}
-
-.ligne-numero {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ambre);
-  font-weight: 700;
-}
-
-.grille-colonnes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  gap: 0.5rem 0.9rem;
-}
-
-.colonne { display: block; }
-.colonne-libelle { font-size: 0.8rem; font-weight: 600; }
-
-.tableau-vide {
-  font-size: 0.84rem;
-  color: var(--discret);
-  font-style: italic;
-  margin: 0.3rem 0 0.5rem;
-}
-
 /* ── Boutons et messages ─────────────────────────────────── */
 
 .production {
@@ -467,3 +339,43 @@ body {
   font-size: 0.82rem;
   color: var(--discret);
 }
+.pieces-jointes {
+  border: 1px dashed var(--vert);
+  border-radius: var(--rayon);
+  padding: 0.8rem 0.9rem;
+  margin: 0.6rem 0 1rem;
+}
+
+.pieces-jointes h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vert);
+  margin: 0 0 0.4rem;
+}
+
+.pieces-jointes .note { margin: 0 0 0.6rem; }
+.liste-pieces { list-style: none; margin: 0 0 0.6rem; padding: 0; }
+
+.liste-pieces li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border-top: 1px solid var(--vert-clair);
+}
+
+.piece-rang {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--vert-clair);
+  color: var(--vert);
+  font: 700 0.75rem/1 inherit;
+  display: grid;
+  place-items: center;
+}
+
+.piece-nom { flex: 1; font-size: 0.88rem; word-break: break-word; }
+.piece-detail { display: block; font-size: 0.78rem; opacity: 0.7; }

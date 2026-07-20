@@ -91,11 +91,80 @@ function blocSommaire(premier) {
 }
 
 /**
+ * Page de garde d'une pièce jointe : elle est annoncée au sommaire, tandis que
+ * les pages de la pièce elle-même ne le sont pas — un document fourni par
+ * l'utilisatrice n'a pas de titre que nous puissions reprendre sans l'inventer.
+ */
+function gardePieceJointe(piece, rang) {
+  return [
+    {
+      tocItem: true,
+      pageBreak: 'before',
+      margin: [0, 0, 0, 10],
+      text: [
+        { text: `Pièce jointe ${rang} — ${piece.nom}`, style: 'titre' },
+        { text: `  Attachment ${rang}`, style: 'titreEn' }
+      ]
+    },
+    {
+      style: 'valeur',
+      text: piece.pages > 1
+        ? `Document joint par vos soins, reproduit tel quel : ${piece.pages} pages.`
+        : 'Document joint par vos soins, reproduit tel quel : 1 page.'
+    }
+  ];
+}
+
+/**
+ * Autant de pages vides que la pièce en compte : elles RÉSERVENT LA PLACE.
+ *
+ * pdfmake établit ainsi le sommaire sur un document qui a déjà sa pagination
+ * définitive. Les pages réelles prendront ensuite la place des blanches, sans
+ * rien décaler. Sans cette réservation, chaque pièce insérée repousserait les
+ * suivantes et les numéros annoncés deviendraient faux.
+ */
+function blancsReserves(nombre) {
+  const pages = [];
+  for (let n = 0; n < nombre; n += 1) {
+    pages.push({ text: ' ', pageBreak: 'before' });
+  }
+  return pages;
+}
+
+/**
+ * Où se trouvent, dans le PDF produit, les pages blanches réservées.
+ *
+ * La section des pièces jointes FERME le dossier : on compte donc depuis la
+ * fin, ce qui évite de dépendre du nombre de pages des documents eux-mêmes.
+ * Les indices partent de zéro, comme pdf-lib les attend.
+ *
+ * @param {number} nbPages pages du dossier produit par pdfmake
+ * @param {Array<{pages: number}>} pieces
+ */
+export function positionsDesPiecesJointes(nbPages, pieces = []) {
+  if (pieces.length === 0) return [];
+
+  const queue = pieces.reduce((total, piece) => total + 1 + piece.pages, 0);
+  if (nbPages < queue) {
+    throw new Error(
+      "Le dossier produit ne comporte pas les pages réservées attendues. Les pièces jointes n'ont pas été insérées, pour ne pas produire un sommaire faux."
+    );
+  }
+
+  let curseur = nbPages - queue;
+  return pieces.map((piece) => {
+    const couverture = curseur;
+    curseur += 1 + piece.pages;
+    return { couverture, premierBlanc: couverture + 1, pages: piece.pages };
+  });
+}
+
+/**
  * @param {string[]} idsDocuments documents choisis
  * @param {object} documents catalogue fusionné
  * @param {object} champs dictionnaire fusionné
  * @param {object} valeurs saisie de l'utilisateur
- * @param {{logo?: string}} options
+ * @param {{logo?: string, pieces?: Array}} options
  */
 export function construireDossier(idsDocuments, documents, champs, valeurs, options = {}) {
   const { couverture, corps, cloture } = ordonnerDossier(idsDocuments, documents);
@@ -117,6 +186,12 @@ export function construireDossier(idsDocuments, documents, champs, valeurs, opti
       ? sections
       : [{ text: 'Aucun renseignement saisi pour ce document.', style: 'valeur' }]));
   }
+
+  // Les pièces jointes ferment le dossier, après la matrice de conformité.
+  (options.pieces || []).forEach((piece, index) => {
+    contenu.push(...gardePieceJointe(piece, index + 1));
+    contenu.push(...blancsReserves(piece.pages));
+  });
 
   return {
     pageSize: 'A4',
