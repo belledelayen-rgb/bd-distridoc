@@ -9,12 +9,23 @@
  * - seuls les renseignements EFFECTIVEMENT saisis figurent au document ;
  * - les libellés sont bilingues, mais les VALEURS ne sont jamais traduites :
  *   l'outil met en forme, il n'invente ni ne réécrit rien ;
- * - chaque bloc est insécable, l'en-tête et le pied sont répétés.
+ * - une section n'est jamais coupée entre deux pages ;
+ * - l'en-tête et le pied sont répétés, la numérotation est « page x/y ».
  */
 
+const COULEURS = {
+  encre: '#2b2a28',
+  discret: '#6b665e',
+  vert: '#2e6b4f',
+  vertClair: '#e6efe8',
+  ambre: '#c8763c',
+  ambreClair: '#faf1e8',
+  filet: '#d9d2c5'
+};
+
 const MENTION_PIED =
-  "Document généré automatiquement à partir des informations saisies par l'utilisateur, "
-  + "qui en demeure seul responsable. Aucune évaluation de la sécurité n'est réalisée.";
+  "Généré automatiquement à partir des seules informations saisies par l'utilisateur, "
+  + "qui en demeure responsable. Aucune évaluation de la sécurité n'est réalisée.";
 
 /** Une valeur est absente si elle est vide, ou si un tableau n'a aucune ligne utile. */
 export function estRenseigne(valeur) {
@@ -45,26 +56,39 @@ export function valeurAffichable(definition, valeur) {
   return String(valeur);
 }
 
-/** Libellé d'un champ, avec son unité s'il en a une. */
-function libelle(definition) {
+/** Libellé bilingue sur une seule ligne, avec l'unité s'il y en a une. */
+export function libelleBilingue(definition) {
   const unite = definition.unite ? ` (${definition.unite})` : '';
-  return `${definition.libelleFr}${unite}`;
+  return [
+    { text: definition.libelleFr + unite, bold: true },
+    { text: ` / ${definition.libelleEn}`, italics: true, color: COULEURS.discret }
+  ];
 }
 
-/** Rendu d'un champ simple : libellé bilingue puis valeur. */
-function blocChamp(definition, valeur) {
-  return {
-    unbreakable: true,
-    margin: [0, 0, 0, 8],
-    stack: [
-      { text: libelle(definition), style: 'libelle' },
-      { text: definition.libelleEn, style: 'libelleEn' },
-      { text: valeurAffichable(definition, valeur), style: 'valeur' }
-    ]
-  };
-}
+/** Disposition compacte : filets horizontaux fins, aucune bordure verticale. */
+const DISPOSITION_FICHE = {
+  hLineWidth: (i, noeud) => (i === 0 || i === noeud.table.body.length ? 0 : 0.4),
+  vLineWidth: () => 0,
+  hLineColor: () => COULEURS.filet,
+  paddingLeft: () => 0,
+  paddingRight: () => 4,
+  paddingTop: () => 3,
+  paddingBottom: () => 3
+};
 
-/** Rendu d'un tableau : en-têtes bilingues, colonnes vides retirées. */
+/** Disposition d'un tableau de données : en-tête ambré, lignes alternées. */
+const DISPOSITION_TABLEAU = {
+  hLineWidth: (i) => (i <= 1 ? 0.6 : 0.3),
+  vLineWidth: () => 0,
+  hLineColor: (i) => (i <= 1 ? COULEURS.ambre : COULEURS.filet),
+  fillColor: (i) => (i === 0 ? COULEURS.ambreClair : null),
+  paddingLeft: () => 4,
+  paddingRight: () => 4,
+  paddingTop: () => 2.5,
+  paddingBottom: () => 2.5
+};
+
+/** Tableau de données : en-têtes bilingues, colonnes entièrement vides retirées. */
 function blocTableau(definition, lignes) {
   const colonnes = (definition.colonnes || []).filter((colonne) =>
     lignes.some((l) => l?.[colonne.id] !== undefined && l[colonne.id] !== '')
@@ -73,9 +97,9 @@ function blocTableau(definition, lignes) {
 
   const entetes = colonnes.map((colonne) => ({
     style: 'enteteTableau',
-    stack: [
+    text: [
       { text: colonne.libelleFr + (colonne.unite ? ` (${colonne.unite})` : '') },
-      { text: colonne.libelleEn, style: 'enteteTableauEn' }
+      { text: ` / ${colonne.libelleEn}`, italics: true, color: COULEURS.discret }
     ]
   }));
 
@@ -89,59 +113,89 @@ function blocTableau(definition, lignes) {
     );
 
   return {
-    unbreakable: true,
-    margin: [0, 0, 0, 10],
+    margin: [0, 4, 0, 6],
     stack: [
-      { text: libelle(definition), style: 'libelle' },
-      { text: definition.libelleEn, style: 'libelleEn' },
+      { text: libelleBilingue(definition), style: 'libelle', margin: [0, 0, 0, 3] },
       {
-        margin: [0, 4, 0, 0],
-        table: {
-          headerRows: 1,
-          widths: colonnes.map(() => '*'),
-          body: [entetes, ...corps]
-        },
-        layout: 'lightHorizontalLines'
+        table: { headerRows: 1, widths: colonnes.map(() => '*'), body: [entetes, ...corps] },
+        layout: DISPOSITION_TABLEAU
       }
     ]
   };
 }
 
-/** Corps du document : sections, puis champs renseignés de chaque section. */
+/**
+ * Corps d'une section : les champs simples sont réunis dans une fiche à deux
+ * colonnes, bien plus compacte qu'un empilement. Les tableaux, qui ont besoin
+ * de toute la largeur, sont placés à la suite.
+ */
+function contenuSection(section, champs, valeurs) {
+  const lignesFiche = [];
+  const tableaux = [];
+
+  for (const idChamp of section.champs || []) {
+    const definition = champs[idChamp];
+    const valeur = valeurs[idChamp];
+    if (!definition || !estRenseigne(valeur)) continue;
+    if (definition.type === 'fichier') continue; // le logo va en en-tête
+
+    if (definition.type === 'tableau') {
+      const bloc = blocTableau(definition, valeur);
+      if (bloc) tableaux.push(bloc);
+    } else {
+      lignesFiche.push([
+        { text: libelleBilingue(definition), style: 'libelle' },
+        { text: valeurAffichable(definition, valeur), style: 'valeur' }
+      ]);
+    }
+  }
+
+  const contenu = [];
+  if (lignesFiche.length > 0) {
+    contenu.push({
+      margin: [0, 2, 0, 4],
+      table: { widths: [165, '*'], body: lignesFiche },
+      layout: DISPOSITION_FICHE
+    });
+  }
+  contenu.push(...tableaux);
+  return contenu;
+}
+
+/** Bandeau de titre de section. */
+function bandeauSection(section) {
+  return {
+    margin: [0, 0, 0, 0],
+    table: {
+      widths: ['*'],
+      body: [[{
+        border: [false, false, false, false],
+        fillColor: COULEURS.vertClair,
+        margin: [6, 3, 6, 3],
+        text: [
+          { text: section.titreFr, bold: true, fontSize: 9.5, color: COULEURS.vert },
+          { text: `  ${section.titreEn}`, italics: true, fontSize: 7.5, color: COULEURS.discret }
+        ]
+      }]]
+    },
+    layout: 'noBorders'
+  };
+}
+
 function construireCorps(document, champs, valeurs) {
   const corps = [];
 
   for (const section of document.sections || []) {
-    const blocs = [];
-    for (const idChamp of section.champs || []) {
-      const definition = champs[idChamp];
-      const valeur = valeurs[idChamp];
-      if (!definition || !estRenseigne(valeur)) continue;
-      if (definition.type === 'fichier') continue; // le logo va en en-tête
-      const bloc = definition.type === 'tableau'
-        ? blocTableau(definition, valeur)
-        : blocChamp(definition, valeur);
-      if (bloc) blocs.push(bloc);
-    }
+    const contenu = contenuSection(section, champs, valeurs);
+    if (contenu.length === 0) continue; // section sans renseignement : non imprimée
 
-    // Une section sans aucun renseignement n'est pas imprimée.
-    if (blocs.length === 0) continue;
-
-    // Le titre de section reste solidaire de son premier bloc : sans cela, un
-    // titre peut se retrouver seul en bas de page, son contenu passant à la
-    // suivante. Les blocs suivants restent libres de couler d'une page à l'autre.
-    const [premier, ...suivants] = blocs;
+    // La section entière est insécable : elle ne sera jamais coupée entre
+    // deux pages. Si elle excède une page complète, pdfmake la reporte.
     corps.push({
       unbreakable: true,
-      stack: [
-        { text: section.titreFr, style: 'section' },
-        { text: section.titreEn, style: 'sectionEn' },
-        premier
-      ]
+      margin: [0, 0, 0, 9],
+      stack: [bandeauSection(section), ...contenu]
     });
-    if (suivants.length > 0) {
-      corps.push({ stack: suivants, margin: [0, 0, 0, 6] });
-    }
   }
 
   return corps;
@@ -158,11 +212,11 @@ export function construireDefinition(document, champs, valeurs, options = {}) {
 
   return {
     pageSize: 'A4',
-    pageMargins: [40, options.logo ? 96 : 76, 40, 56],
+    pageMargins: [38, 62, 38, 38],
     info: { title: document.titreFr },
 
     header: () => ({
-      margin: [40, 24, 40, 0],
+      margin: [38, 20, 38, 0],
       columns: [
         {
           width: '*',
@@ -172,16 +226,16 @@ export function construireDefinition(document, champs, valeurs, options = {}) {
           ]
         },
         options.logo
-          ? { width: 90, image: options.logo, fit: [90, 45], alignment: 'right' }
+          ? { width: 74, image: options.logo, fit: [74, 34], alignment: 'right' }
           : { width: 0, text: '' }
       ]
     }),
 
     footer: (page, total) => ({
-      margin: [40, 8, 40, 0],
+      margin: [38, 4, 38, 0],
       columns: [
         { width: '*', text: MENTION_PIED, style: 'pied' },
-        { width: 70, text: `page ${page}/${total}`, style: 'pied', alignment: 'right' }
+        { width: 46, text: `page ${page}/${total}`, style: 'pied', alignment: 'right' }
       ]
     }),
 
@@ -189,20 +243,16 @@ export function construireDefinition(document, champs, valeurs, options = {}) {
       ? corps
       : [{ text: 'Aucun renseignement saisi pour ce document.', style: 'valeur' }],
 
-    defaultStyle: { font: 'Roboto', fontSize: 10, lineHeight: 1.25 },
+    defaultStyle: { font: 'Roboto', fontSize: 9, lineHeight: 1.15, color: COULEURS.encre },
 
     styles: {
-      titre: { fontSize: 15, bold: true },
-      titreEn: { fontSize: 9, italics: true, color: '#52606d' },
-      section: { fontSize: 11, bold: true, color: '#4a6b52', margin: [0, 10, 0, 0] },
-      sectionEn: { fontSize: 8, italics: true, color: '#52606d', margin: [0, 0, 0, 6] },
-      libelle: { fontSize: 9, bold: true },
-      libelleEn: { fontSize: 8, italics: true, color: '#52606d' },
-      valeur: { fontSize: 10, margin: [0, 1, 0, 0] },
-      enteteTableau: { fontSize: 8, bold: true, margin: [0, 3, 0, 3] },
-      enteteTableauEn: { fontSize: 7, italics: true, color: '#52606d' },
-      celluleTableau: { fontSize: 9, margin: [0, 3, 0, 3] },
-      pied: { fontSize: 6.5, color: '#52606d' }
+      titre: { fontSize: 14, bold: true, color: COULEURS.vert },
+      titreEn: { fontSize: 8, italics: true, color: COULEURS.discret },
+      libelle: { fontSize: 8 },
+      valeur: { fontSize: 9 },
+      enteteTableau: { fontSize: 7.5, bold: true, color: COULEURS.encre },
+      celluleTableau: { fontSize: 8.5 },
+      pied: { fontSize: 6, color: COULEURS.discret }
     }
   };
 }

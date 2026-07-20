@@ -52,7 +52,7 @@ export default function Formulaire({ documentsChoisis, saisie }) {
         <h3>Produire les documents</h3>
         <p className="note">
           Chaque document reprend uniquement les renseignements que vous avez
-          saisis. Les rubriques laissees vides ne sont pas imprimees.
+          saisis. Les rubriques laissées vides ne sont pas imprimées.
         </p>
         <div className="barre-boutons">
           {documentsChoisis.map((idDoc) => (
@@ -63,7 +63,7 @@ export default function Formulaire({ documentsChoisis, saisie }) {
               disabled={enCours !== null}
               onClick={() => produire(idDoc)}
             >
-              {enCours === idDoc ? 'Preparation…' : documents[idDoc].titreFr}
+              {enCours === idDoc ? 'Préparation…' : documents[idDoc].titreFr}
             </button>
           ))}
         </div>
