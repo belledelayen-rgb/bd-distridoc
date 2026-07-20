@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { champs, documents, champsRegroupes, champsManquants } from '../data/index.js';
 import { telechargerDocument, telechargerDossier } from '../pdf/generer.js';
 import Champ from './Champ.jsx';
+import PiecesJointes from './PiecesJointes.jsx';
 
 /** Repère interne du bouton « dossier », distinct de tout identifiant de document. */
 const DOSSIER = '__dossier__';
 
 /** Formulaire construit à partir des documents choisis. */
-export default function Formulaire({ documentsChoisis, saisie }) {
+export default function Formulaire({
+  documentsChoisis, saisie, pieces = [], ajouterPiece, retirerPiece
+}) {
   const [enCours, setEnCours] = useState(null);
   const groupes = champsRegroupes(documentsChoisis);
   const manquants = champsManquants(documentsChoisis, saisie.valeurs);
@@ -17,6 +20,17 @@ export default function Formulaire({ documentsChoisis, saisie }) {
   );
   const faits = requis - manquants.length;
   const avancement = requis === 0 ? 100 : Math.round((faits / requis) * 100);
+
+  // Le dossier n'a de sens qu'à partir de deux pièces à réunir : plusieurs
+  // documents, ou bien un seul document accompagné d'au moins une pièce jointe.
+  const dossierPossible = documentsChoisis.length + pieces.length > 1;
+  const nbDocuments = documentsChoisis.length;
+  const resume = [
+    `${nbDocuments} ${nbDocuments > 1 ? 'documents' : 'document'}`,
+    pieces.length > 0
+      ? `${pieces.length} ${pieces.length > 1 ? 'pièces jointes' : 'pièce jointe'}`
+      : null
+  ].filter(Boolean).join(' et ');
 
   const produire = async (idDoc) => {
     setEnCours(idDoc);
@@ -33,7 +47,8 @@ export default function Formulaire({ documentsChoisis, saisie }) {
     setEnCours(DOSSIER);
     try {
       await telechargerDossier(documentsChoisis, documents, champs, saisie.valeurs, {
-        logo: saisie.valeurs.demandeur_logo || undefined
+        logo: saisie.valeurs.demandeur_logo || undefined,
+        pieces
       });
     } finally {
       setEnCours(null);
@@ -85,7 +100,13 @@ export default function Formulaire({ documentsChoisis, saisie }) {
           saisis. Les rubriques laissées vides ne sont pas imprimées.
         </p>
 
-        {documentsChoisis.length > 1 && (
+        <PiecesJointes
+          pieces={pieces}
+          ajouter={ajouterPiece}
+          retirer={retirerPiece}
+        />
+
+        {dossierPossible && (
           <div className="production-dossier">
             <button
               type="button"
@@ -95,17 +116,17 @@ export default function Formulaire({ documentsChoisis, saisie }) {
             >
               {enCours === DOSSIER
                 ? 'Préparation du dossier…'
-                : `Télécharger le dossier complet (${documentsChoisis.length} documents)`}
+                : `Télécharger le dossier complet (${resume})`}
             </button>
             <p className="note">
-              Un seul fichier PDF réunissant vos {documentsChoisis.length}{' '}
-              documents, avec un sommaire qui indique la page de chacun.
+              Un seul fichier PDF réunissant {resume}, avec un sommaire qui
+              indique la page de chacun.
             </p>
           </div>
         )}
 
         <p className="note">
-          {documentsChoisis.length > 1
+          {dossierPossible
             ? 'Ou téléchargez les documents un par un :'
             : 'Téléchargez votre document :'}
         </p>
