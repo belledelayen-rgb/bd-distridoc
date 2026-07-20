@@ -1,10 +1,19 @@
+import { propositions } from '../data/index.js';
+
 /**
  * Tableau à lignes répétables. Chaque ligne est rendue comme une carte dont
  * les colonnes sont empilées : un tableau à huit colonnes serait impraticable
  * sur un téléphone.
+ *
+ * Une colonne peut déclarer un référentiel de suggestions. Le rendu utilise
+ * alors une liste de propositions : elle aide à écrire la dénomination exacte
+ * sans jamais empêcher de saisir autre chose.
  */
 export default function ChampTableau({ id, definition, lignes, saisie }) {
   const colonnes = definition.colonnes || [];
+  const listes = colonnes
+    .filter((c) => c.suggestions)
+    .map((c) => ({ id: `${id}-${c.id}-propositions`, entrees: propositions(c.suggestions) }));
 
   return (
     <div className="champ champ-tableau">
@@ -40,6 +49,7 @@ export default function ChampTableau({ id, definition, lignes, saisie }) {
               </span>
               <input
                 type={colonne.type === 'nombre' ? 'number' : 'text'}
+                list={colonne.suggestions ? `${id}-${colonne.id}-propositions` : undefined}
                 value={ligne[colonne.id] ?? ''}
                 onChange={(e) => saisie.modifierLigne(id, index, colonne.id, e.target.value)}
               />
@@ -56,6 +66,14 @@ export default function ChampTableau({ id, definition, lignes, saisie }) {
       >
         Ajouter une ligne
       </button>
+
+      {lignes.length > 0 && listes.map((liste) => (
+        <datalist key={liste.id} id={liste.id}>
+          {liste.entrees.map((e) => (
+            <option key={e.valeur} value={e.valeur}>{e.indication}</option>
+          ))}
+        </datalist>
+      ))}
     </div>
   );
 }

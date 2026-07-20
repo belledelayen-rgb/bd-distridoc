@@ -18,6 +18,7 @@ const FAMILLES = [
   'produit', 'composition', 'donnees', 'fabrication',
   'revendications', 'administratif', 'assemblage'
 ];
+const REFERENTIELS = ['allergenes'];
 
 const dictionnaires = Object.fromEntries(
   DOMAINES.map((d) => [d, lire(`src/data/champs/${d}.json`)])
@@ -25,13 +26,17 @@ const dictionnaires = Object.fromEntries(
 const catalogues = Object.fromEntries(
   FAMILLES.map((f) => [f, lire(`src/data/documents/${f}.json`)])
 );
+const referentiels = Object.fromEntries(
+  REFERENTIELS.map((r) => [r, lire(`src/data/referentiels/${r}.json`)])
+);
 
-const bilan = validerMatriceAvec(dictionnaires, catalogues);
+const bilan = validerMatriceAvec(dictionnaires, catalogues, referentiels);
 
 console.log('Champs definis  :', bilan.statistiques.champs);
 console.log('Champs cites    :', bilan.statistiques.champsCites);
 console.log('Documents       :', bilan.statistiques.documents);
 console.log('Catalogues      :', bilan.statistiques.catalogues);
+console.log('Referentiels    :', Object.keys(referentiels).length);
 
 if (bilan.avertissements.length) {
   console.log('\nAvertissements :');
