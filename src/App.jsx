@@ -1,22 +1,41 @@
-import { documents } from './data/index.js';
-
-const FAMILLES = [
-  ['produit', 'Produit'],
-  ['composition', 'Composition et matières'],
-  ['donnees', 'Données'],
-  ['fabrication', 'Fabrication'],
-  ['revendications', 'Revendications'],
-  ['administratif', 'Administratif'],
-  ['assemblage', 'Assemblage']
-];
+import { useState, useRef } from 'react';
+import { useSaisie } from './etat/useSaisie.js';
+import { telechargerBrouillon, lireBrouillon } from './brouillon.js';
+import ChoixDocuments from './composants/ChoixDocuments.jsx';
+import Formulaire from './composants/Formulaire.jsx';
 
 export default function App() {
-  const parFamille = FAMILLES.map(([cle, libelle]) => [
-    libelle,
-    Object.entries(documents).filter(([, doc]) => doc.famille === cle)
-  ]).filter(([, liste]) => liste.length > 0);
+  const [documentsChoisis, setDocumentsChoisis] = useState([]);
+  const [message, setMessage] = useState(null);
+  const champFichier = useRef(null);
+  const saisie = useSaisie();
 
-  const total = Object.keys(documents).length;
+  const basculer = (id) => {
+    setDocumentsChoisis((liste) =>
+      liste.includes(id) ? liste.filter((x) => x !== id) : [...liste, id]
+    );
+  };
+
+  const importer = async (evenement) => {
+    const fichier = evenement.target.files?.[0];
+    if (!fichier) return;
+    try {
+      const { documentsChoisis: docs, valeurs } = await lireBrouillon(fichier);
+      setDocumentsChoisis(docs);
+      saisie.remplacerTout(valeurs);
+      setMessage({ type: 'ok', texte: 'Brouillon repris.' });
+    } catch (erreur) {
+      setMessage({ type: 'erreur', texte: erreur.message });
+    }
+    evenement.target.value = '';
+  };
+
+  const recommencer = () => {
+    if (!window.confirm('Effacer toute la saisie en cours ?')) return;
+    setDocumentsChoisis([]);
+    saisie.toutEffacer();
+    setMessage(null);
+  };
 
   return (
     <main className="page">
@@ -36,31 +55,61 @@ export default function App() {
           sur la securite du produit cosmetique.
         </p>
         <p>
-          Aucune donnee n&apos;est conservee : tout reste dans votre navigateur et
-          disparait a la fermeture de la page.
+          <strong>Aucune donnee n&apos;est conservee.</strong> Tout reste dans votre
+          navigateur et disparait a la fermeture de la page. Rien n&apos;est envoye
+          a un serveur. Si vous souhaitez reprendre votre saisie plus tard,
+          enregistrez un brouillon sur votre appareil.
         </p>
       </section>
 
+      <ChoixDocuments
+        choisis={documentsChoisis}
+        basculer={basculer}
+        toutDecocher={() => setDocumentsChoisis([])}
+      />
+
+      {documentsChoisis.length > 0 && (
+        <Formulaire documentsChoisis={documentsChoisis} saisie={saisie} />
+      )}
+
       <section className="bloc">
-        <h2>Documents disponibles</h2>
-        <p className="note compteur">{total} documents repartis en {parFamille.length} familles.</p>
-        {parFamille.map(([libelle, liste]) => (
-          <div key={libelle} className="famille">
-            <h3>{libelle}</h3>
-            <ul className="liste-documents">
-              {liste.map(([id, doc]) => (
-                <li key={id}>
-                  <span className="doc-titre">{doc.titreFr}</span>
-                  <span className="doc-en">{doc.titreEn}</span>
-                  <span className="doc-meta">{doc.sections.length} sections</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <h2>Brouillon</h2>
         <p className="note">
-          Le formulaire de saisie arrive au lot suivant.
+          Le brouillon est un fichier enregistre sur votre appareil. Il ne passe
+          par aucun serveur.
         </p>
+        {message && (
+          <p className={message.type === 'ok' ? 'message-ok' : 'message-erreur'}>
+            {message.texte}
+          </p>
+        )}
+        <div className="barre-boutons">
+          <button
+            type="button"
+            className="bouton-secondaire"
+            disabled={documentsChoisis.length === 0}
+            onClick={() => telechargerBrouillon(documentsChoisis, saisie.valeurs)}
+          >
+            Enregistrer mon brouillon
+          </button>
+          <button
+            type="button"
+            className="bouton-secondaire"
+            onClick={() => champFichier.current?.click()}
+          >
+            Reprendre un brouillon
+          </button>
+          <input
+            ref={champFichier}
+            type="file"
+            accept="application/json,.json"
+            onChange={importer}
+            hidden
+          />
+          <button type="button" className="bouton-discret" onClick={recommencer}>
+            Tout effacer
+          </button>
+        </div>
       </section>
     </main>
   );

@@ -10,6 +10,8 @@ import revendications from './champs/revendications.json';
 import administratif from './champs/administratif.json';
 import fds from './champs/fds.json';
 
+import { regrouperChamps, trouverManquants, indexerDomaines } from './regles.js';
+
 import docProduit from './documents/produit.json';
 import docComposition from './documents/composition.json';
 import docDonnees from './documents/donnees.json';
@@ -41,10 +43,44 @@ export const catalogues = {
 // Vues fusionnées.
 export const champs = Object.assign({}, ...Object.values(dictionnaires));
 export const documents = Object.assign({}, ...Object.values(catalogues));
+const indexDomaines = indexerDomaines(dictionnaires);
+
+// Libellés lisibles des domaines de champs, pour regrouper la saisie.
+export const LIBELLES_DOMAINES = {
+  communs: 'Vos coordonnées et le document',
+  produit: 'Le produit',
+  matiere: 'La matière première',
+  composition: 'La composition',
+  emballage: "L'emballage",
+  signature: 'La signature',
+  donnees: 'Les données et analyses',
+  fabrication: 'La fabrication',
+  revendications: 'Les revendications',
+  administratif: 'Les démarches administratives',
+  fds: 'La fiche de données de sécurité'
+};
+
+/** Domaine auquel appartient un champ. */
+export function domaineDuChamp(idChamp) {
+  return indexDomaines[idChamp];
+}
 
 /** Identifiants de champs cités par un document, dans l'ordre des sections. */
 export function champsDuDocument(idDocument) {
   const doc = documents[idDocument];
   if (!doc) return [];
   return doc.sections.flatMap((section) => section.champs);
+}
+
+/** Champs des documents choisis, regroupés par domaine, avec libellés. */
+export function champsRegroupes(idsDocuments) {
+  return regrouperChamps(dictionnaires, documents, idsDocuments).map((g) => ({
+    ...g,
+    libelle: LIBELLES_DOMAINES[g.domaine] || g.domaine
+  }));
+}
+
+/** Champs requis non renseignés, pour une sélection de documents. */
+export function champsManquants(idsDocuments, valeurs) {
+  return trouverManquants(champs, champsRegroupes(idsDocuments), valeurs);
 }

@@ -116,3 +116,60 @@ export function validerMatriceAvec(dictionnaires, catalogues) {
     }
   };
 }
+
+/** Index inverse : identifiant de champ -> domaine qui le définit. */
+export function indexerDomaines(dictionnaires) {
+  const index = {};
+  for (const [domaine, dico] of Object.entries(dictionnaires)) {
+    for (const id of Object.keys(dico)) index[id] = domaine;
+  }
+  return index;
+}
+
+/**
+ * Union ordonnée des champs exigés par plusieurs documents, regroupés par
+ * domaine. Un champ partagé par plusieurs documents n'apparaît qu'une fois :
+ * c'est ce qui évite de redemander deux fois le même renseignement.
+ */
+export function regrouperChamps(dictionnaires, documents, idsDocuments) {
+  const domaines = indexerDomaines(dictionnaires);
+  const vus = new Set();
+  const parDomaine = new Map();
+
+  for (const idDoc of idsDocuments) {
+    const doc = documents[idDoc];
+    if (!doc) continue;
+    for (const section of doc.sections || []) {
+      for (const idChamp of section.champs || []) {
+        if (vus.has(idChamp)) continue;
+        vus.add(idChamp);
+        const domaine = domaines[idChamp];
+        if (!parDomaine.has(domaine)) parDomaine.set(domaine, []);
+        parDomaine.get(domaine).push(idChamp);
+      }
+    }
+  }
+
+  // Ordre d'affichage : celui de la déclaration des dictionnaires.
+  return Object.keys(dictionnaires)
+    .filter((domaine) => parDomaine.has(domaine))
+    .map((domaine) => ({ domaine, champs: parDomaine.get(domaine) }));
+}
+
+/** Un renseignement est manquant s'il est requis et vide. */
+export function estVide(valeur) {
+  if (valeur === undefined || valeur === null || valeur === '') return true;
+  if (Array.isArray(valeur) && valeur.length === 0) return true;
+  return false;
+}
+
+/** Identifiants des champs requis non renseignés. */
+export function trouverManquants(champs, groupes, valeurs) {
+  const manquants = [];
+  for (const groupe of groupes) {
+    for (const id of groupe.champs) {
+      if (champs[id]?.requis && estVide(valeurs[id])) manquants.push(id);
+    }
+  }
+  return manquants;
+}
