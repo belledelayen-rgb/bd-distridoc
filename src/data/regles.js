@@ -1,4 +1,4 @@
-const TYPES_CONNUS = ['texte', 'texteLong', 'nombre', 'date', 'booleen', 'choix', 'tableau', 'fichier'];
+const TYPES_CONNUS = ['texte', 'texteCourt', 'texteLong', 'nombre', 'date', 'booleen', 'choix', 'tableau', 'fichier'];
 
 /**
  * Contrôle de cohérence de la matrice de documents.

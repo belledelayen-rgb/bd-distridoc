@@ -36,15 +36,17 @@ export default function Formulaire({ documentsChoisis, saisie }) {
       {groupes.map((groupe) => (
         <div key={groupe.domaine} className="groupe">
           <h3>{groupe.libelle}</h3>
-          {groupe.champs.map((id) => (
-            <Champ
-              key={id}
-              id={id}
-              definition={champs[id]}
-              valeur={saisie.valeurs[id]}
-              saisie={saisie}
-            />
-          ))}
+          <div className="grille-champs">
+            {groupe.champs.map((id) => (
+              <Champ
+                key={id}
+                id={id}
+                definition={champs[id]}
+                valeur={saisie.valeurs[id]}
+                saisie={saisie}
+              />
+            ))}
+          </div>
         </div>
       ))}
 

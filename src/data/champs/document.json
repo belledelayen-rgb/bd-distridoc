@@ -1,0 +1,23 @@
+{
+  "document_reference": {
+    "libelleFr": "Référence du document",
+    "libelleEn": "Document reference",
+    "type": "texte"
+  },
+  "document_version": {
+    "libelleFr": "Version",
+    "libelleEn": "Version",
+    "type": "texte"
+  },
+  "document_date": {
+    "libelleFr": "Date d'établissement",
+    "libelleEn": "Date of issue",
+    "type": "date",
+    "requis": true
+  },
+  "document_redacteur": {
+    "libelleFr": "Rédigé par",
+    "libelleEn": "Drawn up by",
+    "type": "texte"
+  }
+}

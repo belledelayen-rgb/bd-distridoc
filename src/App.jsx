@@ -6,6 +6,7 @@ import Formulaire from './composants/Formulaire.jsx';
 
 export default function App() {
   const [documentsChoisis, setDocumentsChoisis] = useState([]);
+  const [choixOuvert, setChoixOuvert] = useState(true);
   const [message, setMessage] = useState(null);
   const champFichier = useRef(null);
   const saisie = useSaisie();
@@ -22,6 +23,7 @@ export default function App() {
     try {
       const { documentsChoisis: docs, valeurs } = await lireBrouillon(fichier);
       setDocumentsChoisis(docs);
+      setChoixOuvert(docs.length === 0);
       saisie.remplacerTout(valeurs);
       setMessage({ type: 'ok', texte: 'Brouillon repris.' });
     } catch (erreur) {
@@ -33,6 +35,7 @@ export default function App() {
   const recommencer = () => {
     if (!window.confirm('Effacer toute la saisie en cours ?')) return;
     setDocumentsChoisis([]);
+    setChoixOuvert(true);
     saisie.toutEffacer();
     setMessage(null);
   };
@@ -46,31 +49,35 @@ export default function App() {
         </p>
       </header>
 
-      <section className="bloc">
-        <h2>Principe</h2>
-        <p>
-          L&apos;outil met en forme les informations que vous saisissez. Il n&apos;invente
-          rien, ne suppose rien et ne complète aucune donnée manquante. Il ne
-          réalise aucune évaluation de la sécurité et ne produit aucun rapport
-          sur la sécurité du produit cosmétique.
-        </p>
-        <p>
-          <strong>Aucune donnée n&apos;est conservée.</strong> Tout reste dans votre
-          navigateur et disparaît à la fermeture de la page. Rien n&apos;est envoyé
-          à un serveur. Si vous souhaitez reprendre votre saisie plus tard,
-          enregistrez un brouillon sur votre appareil.
-        </p>
-      </section>
+      {documentsChoisis.length === 0 && (
+        <section className="bloc">
+          <h2>Principe</h2>
+          <p>
+            L&apos;outil met en forme les informations que vous saisissez. Il n&apos;invente
+            rien, ne suppose rien et ne complète aucune donnée manquante. Il ne
+            réalise aucune évaluation de la sécurité et ne produit aucun rapport
+            sur la sécurité du produit cosmétique.
+          </p>
+          <p>
+            <strong>Aucune donnée n&apos;est conservée.</strong> Tout reste dans votre
+            navigateur et disparaît à la fermeture de la page. Rien n&apos;est envoyé
+            à un serveur. Si vous souhaitez reprendre votre saisie plus tard,
+            enregistrez un brouillon sur votre appareil.
+          </p>
+        </section>
+      )}
+
+      {documentsChoisis.length > 0 && (
+        <Formulaire documentsChoisis={documentsChoisis} saisie={saisie} />
+      )}
 
       <ChoixDocuments
         choisis={documentsChoisis}
         basculer={basculer}
         toutDecocher={() => setDocumentsChoisis([])}
+        ouvert={choixOuvert || documentsChoisis.length === 0}
+        basculerOuvert={() => setChoixOuvert((o) => !o)}
       />
-
-      {documentsChoisis.length > 0 && (
-        <Formulaire documentsChoisis={documentsChoisis} saisie={saisie} />
-      )}
 
       <section className="bloc">
         <h2>Brouillon</h2>

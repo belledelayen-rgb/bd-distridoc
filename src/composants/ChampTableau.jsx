@@ -11,10 +11,9 @@ export default function ChampTableau({ id, definition, lignes, saisie }) {
       <span className="champ-libelle">
         {definition.libelleFr}
         {definition.requis && <span className="requis" title="Renseignement requis">*</span>}
+        <span className="champ-libelle-en"> / {definition.libelleEn}</span>
       </span>
-      <span className="champ-libelle-en">{definition.libelleEn}</span>
       {definition.aide && <p className="champ-aide">{definition.aide}</p>}
-
       {lignes.length === 0 && (
         <p className="tableau-vide">Aucune ligne pour le moment.</p>
       )}
@@ -31,11 +30,13 @@ export default function ChampTableau({ id, definition, lignes, saisie }) {
               Supprimer
             </button>
           </div>
+          <div className="grille-colonnes">
           {colonnes.map((colonne) => (
             <label key={colonne.id} className="colonne">
               <span className="colonne-libelle">
                 {colonne.libelleFr}
                 {colonne.unite && <span className="unite"> ({colonne.unite})</span>}
+                <span className="champ-libelle-en"> / {colonne.libelleEn}</span>
               </span>
               <input
                 type={colonne.type === 'nombre' ? 'number' : 'text'}
@@ -44,6 +45,7 @@ export default function ChampTableau({ id, definition, lignes, saisie }) {
               />
             </label>
           ))}
+          </div>
         </div>
       ))}
 

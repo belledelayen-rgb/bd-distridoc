@@ -21,8 +21,11 @@ export default function Champ({ id, definition, valeur, saisie }) {
 
   let controle;
   switch (definition.type) {
+    case 'texteCourt':
+      controle = <textarea rows={2} {...commun} />;
+      break;
     case 'texteLong':
-      controle = <textarea rows={4} {...commun} />;
+      controle = <textarea rows={3} {...commun} />;
       break;
     case 'nombre':
       controle = <input type="number" step="any" {...commun} />;
@@ -76,10 +79,10 @@ export default function Champ({ id, definition, valeur, saisie }) {
         {definition.libelleFr}
         {definition.unite && <span className="unite"> ({definition.unite})</span>}
         {definition.requis && <span className="requis" title="Renseignement requis">*</span>}
+        <span className="champ-libelle-en"> / {definition.libelleEn}</span>
       </label>
-      <span className="champ-libelle-en">{definition.libelleEn}</span>
-      {definition.aide && <p className="champ-aide">{definition.aide}</p>}
       {controle}
+      {definition.aide && <p className="champ-aide">{definition.aide}</p>}
     </div>
   );
 }
