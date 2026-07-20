@@ -10,22 +10,8 @@ const LIBELLES_FAMILLES = {
   assemblage: 'Assemblage'
 };
 
-/** Sélection des documents à produire. Repliable une fois le choix fait. */
-export default function ChoixDocuments({ choisis, basculer, toutDecocher, ouvert, basculerOuvert }) {
-  if (!ouvert) {
-    return (
-      <section className="bloc bloc-replie">
-        <button type="button" className="resume-choix" onClick={basculerOuvert}>
-          <span>
-            <strong>{choisis.length}</strong> document{choisis.length > 1 ? 's' : ''} choisi
-            {choisis.length > 1 ? 's' : ''}
-          </span>
-          <span className="lien-modifier">Modifier la sélection</span>
-        </button>
-      </section>
-    );
-  }
-
+/** Sélection des documents à produire. Première étape du parcours. */
+export default function ChoixDocuments({ choisis, basculer, toutDecocher, continuer }) {
   return (
     <section className="bloc">
       <h2>Choisir les documents</h2>
@@ -58,16 +44,23 @@ export default function ChoixDocuments({ choisis, basculer, toutDecocher, ouvert
         </div>
       ))}
 
-      {choisis.length > 0 && (
-        <div className="barre-boutons">
-          <button type="button" className="bouton-secondaire" onClick={basculerOuvert}>
-            Passer aux renseignements
-          </button>
+      <div className="barre-etape">
+        <button
+          type="button"
+          className="bouton-principal"
+          disabled={choisis.length === 0}
+          onClick={continuer}
+        >
+          {choisis.length === 0
+            ? 'Choisissez au moins un document'
+            : `Continuer avec ${choisis.length} document${choisis.length > 1 ? 's' : ''}`}
+        </button>
+        {choisis.length > 0 && (
           <button type="button" className="bouton-discret" onClick={toutDecocher}>
             Tout décocher
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }
