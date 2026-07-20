@@ -116,7 +116,8 @@
         "id": "nom_inci",
         "libelleFr": "Nom INCI",
         "libelleEn": "INCI name",
-        "type": "texte"
+        "type": "texte",
+        "suggestions": "allergenes"
       },
       {
         "id": "concentration",
@@ -126,7 +127,7 @@
         "unite": "%"
       }
     ],
-    "aide": "N'indiquez que les allergènes dépassant le seuil de déclaration applicable."
+    "aide": "N'indiquez que les allergènes dépassant le seuil de déclaration : 0,001 % pour un produit sans rinçage, 0,01 % pour un produit à rincer (article 19 §1 g). Les propositions reprennent l'annexe III du règlement (CE) 1223/2009 ; elles vous aident à écrire la dénomination, elles ne décident pas à votre place. Vous pouvez saisir un nom qui n'y figure pas."
   },
   "produit_lieu_fabrication": {
     "libelleFr": "Lieu de fabrication",

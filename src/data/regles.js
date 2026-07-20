@@ -5,11 +5,13 @@ const TYPES_CONNUS = ['texte', 'texteCourt', 'texteLong', 'nombre', 'date', 'boo
  * Fonction pure : elle ne lit aucun fichier et ne dépend d'aucune saisie utilisateur.
  * @param {Record<string, object>} dictionnaires domaine -> dictionnaire de champs
  * @param {Record<string, object>} catalogues famille -> catalogue de documents
+ * @param {Record<string, object>} referentiels nom -> référentiel d'aide à la saisie
  * @returns {{valide: boolean, erreurs: string[], avertissements: string[], statistiques: object}}
  */
-export function validerMatriceAvec(dictionnaires, catalogues) {
+export function validerMatriceAvec(dictionnaires, catalogues, referentiels = {}) {
   const erreurs = [];
   const avertissements = [];
+  const referentielsCites = new Set();
 
   // 1. Un identifiant de champ ne doit exister que dans un seul dictionnaire.
   const champs = {};
@@ -49,6 +51,28 @@ export function validerMatriceAvec(dictionnaires, catalogues) {
       if (!colonne.libelleFr || !colonne.libelleEn) {
         erreurs.push(`Champ « ${id} », colonne « ${colonne.id} » : libellé bilingue incomplet.`);
       }
+      if (colonne.suggestions) {
+        referentielsCites.add(colonne.suggestions);
+        if (!referentiels[colonne.suggestions]) {
+          erreurs.push(
+            `Champ « ${id} », colonne « ${colonne.id} » : référentiel de suggestions `
+            + `« ${colonne.suggestions} » inconnu.`
+          );
+        }
+      }
+    }
+    if (def.suggestions) {
+      referentielsCites.add(def.suggestions);
+      if (!referentiels[def.suggestions]) {
+        erreurs.push(`Champ « ${id} » : référentiel de suggestions « ${def.suggestions} » inconnu.`);
+      }
+    }
+  }
+
+  // Un référentiel que personne ne cite est du code mort en puissance.
+  for (const nom of Object.keys(referentiels)) {
+    if (!referentielsCites.has(nom)) {
+      avertissements.push(`Référentiel « ${nom} » défini mais cité par aucun champ.`);
     }
   }
 

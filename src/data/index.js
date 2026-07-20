@@ -21,6 +21,13 @@ import docRevendications from './documents/revendications.json';
 import docAdministratif from './documents/administratif.json';
 import docAssemblage from './documents/assemblage.json';
 
+import allergenes from './referentiels/allergenes.json';
+
+// Référentiels d'aide à la saisie. Ils PROPOSENT, ils n'imposent rien : un champ
+// qui les cite reste librement saisissable. Ajouter ici tout nouveau référentiel,
+// et la ligne correspondante dans scripts/verifier-matrice.mjs.
+export const referentiels = { allergenes };
+
 // Dictionnaires de champs, par domaine.
 // Ajouter ici tout nouveau domaine, et la ligne correspondante dans
 // scripts/verifier-matrice.mjs.
@@ -75,4 +82,19 @@ export function champsRegroupes(idsDocuments) {
 /** Champs requis non renseignés, pour une sélection de documents. */
 export function champsManquants(idsDocuments, valeurs) {
   return trouverManquants(champs, champsRegroupes(idsDocuments), valeurs);
+}
+
+/**
+ * Propositions d'un référentiel, prêtes à être affichées.
+ * Chaque proposition porte la valeur à écrire et une indication lisible
+ * (numéro d'annexe, type, précision) qui aide à choisir la bonne entrée.
+ */
+export function propositions(nomReferentiel) {
+  const ref = referentiels[nomReferentiel];
+  if (!ref) return [];
+  return ref.entrees.map((e) => {
+    const type = ref.types[e.type] || e.type;
+    const detail = e.precision ? `${type} — ${e.precision}` : type;
+    return { valeur: e.nom, indication: `n° ${e.n} · ${detail}` };
+  });
 }

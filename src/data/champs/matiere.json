@@ -229,7 +229,8 @@
         "id": "nom_inci",
         "libelleFr": "Nom INCI",
         "libelleEn": "INCI name",
-        "type": "texte"
+        "type": "texte",
+        "suggestions": "allergenes"
       },
       {
         "id": "concentration",
@@ -238,6 +239,7 @@
         "type": "nombre",
         "unite": "%"
       }
-    ]
+    ],
+    "aide": "Allergènes présents dans la matière. Seuils de déclaration : 0,001 % sans rinçage, 0,01 % à rincer (article 19 §1 g). Les propositions reprennent l'annexe III du règlement (CE) 1223/2009 ; elles vous aident à écrire la dénomination, elles ne décident pas à votre place."
   }
 }
