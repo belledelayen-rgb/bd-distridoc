@@ -171,5 +171,296 @@
         ]
       }
     ]
+  },
+  "ft_produit_fini": {
+    "famille": "produit",
+    "titreFr": "Fiche technique du produit fini",
+    "titreEn": "Finished product technical data sheet",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Responsable de la mise sur le marché",
+        "titreEn": "Responsible person",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Identification du produit",
+        "titreEn": "Product identification",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_type",
+          "produit_fonction",
+          "produit_usage",
+          "produit_contenance"
+        ]
+      },
+      {
+        "titreFr": "Caractéristiques physico-chimiques",
+        "titreEn": "Physicochemical characteristics",
+        "champs": [
+          "produit_aspect",
+          "produit_couleur",
+          "produit_odeur",
+          "produit_ph",
+          "produit_densite"
+        ]
+      },
+      {
+        "titreFr": "Composition",
+        "titreEn": "Composition",
+        "champs": [
+          "produit_inci",
+          "produit_allergenes"
+        ]
+      },
+      {
+        "titreFr": "Conditionnement et conservation",
+        "titreEn": "Packaging and storage",
+        "champs": [
+          "produit_conditionnement",
+          "produit_conservation",
+          "produit_pao",
+          "produit_ddm"
+        ]
+      },
+      {
+        "titreFr": "Utilisation",
+        "titreEn": "Use",
+        "champs": [
+          "produit_mode_emploi",
+          "produit_precautions"
+        ]
+      },
+      {
+        "titreFr": "Traçabilité",
+        "titreEn": "Traceability",
+        "champs": [
+          "produit_lieu_fabrication",
+          "produit_date_fabrication",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "projet_etiquette": {
+    "famille": "produit",
+    "titreFr": "Projet d'étiquette",
+    "titreEn": "Draft label",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Mentions du responsable",
+        "titreEn": "Responsible person details",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "produit_pays_origine"
+        ]
+      },
+      {
+        "titreFr": "Mentions du produit",
+        "titreEn": "Product details",
+        "champs": [
+          "produit_nom",
+          "produit_fonction",
+          "produit_contenance"
+        ]
+      },
+      {
+        "titreFr": "Durabilité et traçabilité",
+        "titreEn": "Durability and traceability",
+        "champs": [
+          "produit_ddm",
+          "produit_pao",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Précautions et ingrédients",
+        "titreEn": "Precautions and ingredients",
+        "champs": [
+          "produit_precautions",
+          "produit_inci"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "declaration_conformite": {
+    "famille": "produit",
+    "titreFr": "Déclaration de conformité au règlement (CE) 1223/2009",
+    "titreEn": "Declaration of conformity with Regulation (EC) 1223/2009",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Déclarant",
+        "titreEn": "Declarant",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_type",
+          "produit_contenance",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Signature",
+        "titreEn": "Signature",
+        "champs": [
+          "signature_nom",
+          "signature_qualite",
+          "signature_lieu",
+          "signature_date"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "composition_quali_quanti": {
+    "famille": "composition",
+    "titreFr": "Composition qualitative et quantitative",
+    "titreEn": "Qualitative and quantitative composition",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot",
+          "produit_date_fabrication"
+        ]
+      },
+      {
+        "titreFr": "Formule",
+        "titreEn": "Formula",
+        "champs": [
+          "composition_lignes",
+          "composition_observations"
+        ]
+      },
+      {
+        "titreFr": "Liste des ingrédients",
+        "titreEn": "List of ingredients",
+        "champs": [
+          "produit_inci",
+          "produit_allergenes"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "ft_emballage": {
+    "famille": "composition",
+    "titreFr": "Fiche technique d'emballage",
+    "titreEn": "Packaging technical data sheet",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Identification de l'emballage",
+        "titreEn": "Packaging identification",
+        "champs": [
+          "emballage_designation",
+          "emballage_type",
+          "emballage_materiau",
+          "emballage_capacite",
+          "emballage_fermeture",
+          "emballage_couleur"
+        ]
+      },
+      {
+        "titreFr": "Approvisionnement",
+        "titreEn": "Sourcing",
+        "champs": [
+          "emballage_fournisseur",
+          "emballage_reference"
+        ]
+      },
+      {
+        "titreFr": "Aptitude à l'emploi",
+        "titreEn": "Fitness for use",
+        "champs": [
+          "emballage_compatibilite",
+          "emballage_conformite",
+          "emballage_recyclabilite"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
   }
 }

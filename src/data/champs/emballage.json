@@ -1,0 +1,64 @@
+{
+  "emballage_designation": {
+    "libelleFr": "Désignation de l'emballage",
+    "libelleEn": "Packaging name",
+    "type": "texte",
+    "requis": true
+  },
+  "emballage_type": {
+    "libelleFr": "Type de conditionnement",
+    "libelleEn": "Type of packaging",
+    "type": "texte",
+    "aide": "Exemple : pot, flacon, étui carton, film thermorétractable."
+  },
+  "emballage_materiau": {
+    "libelleFr": "Matériau",
+    "libelleEn": "Material",
+    "type": "texte",
+    "requis": true,
+    "aide": "Exemple : verre, polypropylène, carton recyclé."
+  },
+  "emballage_capacite": {
+    "libelleFr": "Capacité",
+    "libelleEn": "Capacity",
+    "type": "nombre",
+    "unite": "g ou ml"
+  },
+  "emballage_fermeture": {
+    "libelleFr": "Système de fermeture",
+    "libelleEn": "Closure system",
+    "type": "texte"
+  },
+  "emballage_couleur": {
+    "libelleFr": "Couleur",
+    "libelleEn": "Colour",
+    "type": "texte"
+  },
+  "emballage_fournisseur": {
+    "libelleFr": "Fournisseur",
+    "libelleEn": "Supplier",
+    "type": "texte"
+  },
+  "emballage_reference": {
+    "libelleFr": "Référence fournisseur",
+    "libelleEn": "Supplier reference",
+    "type": "texte"
+  },
+  "emballage_compatibilite": {
+    "libelleFr": "Compatibilité avec le contenu",
+    "libelleEn": "Compatibility with the content",
+    "type": "texteLong",
+    "aide": "Décrivez les constats réels : essai de conservation, absence de déformation, étanchéité observée."
+  },
+  "emballage_conformite": {
+    "libelleFr": "Conformité déclarée par le fournisseur",
+    "libelleEn": "Conformity declared by the supplier",
+    "type": "texteLong",
+    "aide": "Reprenez uniquement ce que le fournisseur atteste par écrit. N'ajoutez aucune conclusion."
+  },
+  "emballage_recyclabilite": {
+    "libelleFr": "Recyclabilité et consigne de tri",
+    "libelleEn": "Recyclability and sorting instruction",
+    "type": "texte"
+  }
+}

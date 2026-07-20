@@ -1,0 +1,25 @@
+{
+  "composition_lignes": {
+    "libelleFr": "Composition qualitative et quantitative",
+    "libelleEn": "Qualitative and quantitative composition",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "nom_inci", "libelleFr": "Nom INCI", "libelleEn": "INCI name", "type": "texte" },
+      { "id": "nom_commun", "libelleFr": "Nom commun", "libelleEn": "Common name", "type": "texte" },
+      { "id": "fonction", "libelleFr": "Fonction", "libelleEn": "Function", "type": "texte" },
+      { "id": "cas", "libelleFr": "Numéro CAS", "libelleEn": "CAS number", "type": "texte" },
+      { "id": "ce", "libelleFr": "Numéro CE", "libelleEn": "EC number", "type": "texte" },
+      { "id": "pourcentage", "libelleFr": "Teneur", "libelleEn": "Content", "type": "nombre", "unite": "%" },
+      { "id": "fournisseur", "libelleFr": "Fournisseur", "libelleEn": "Supplier", "type": "texte" },
+      { "id": "lot", "libelleFr": "Numéro de lot", "libelleEn": "Batch number", "type": "texte" }
+    ],
+    "aide": "Une ligne par matière première. Les numéros CAS et CE se saisissent d'après CosIng."
+  },
+  "composition_observations": {
+    "libelleFr": "Observations sur la formule",
+    "libelleEn": "Notes on the formula",
+    "type": "texteLong",
+    "aide": "Par exemple : pertes à la saponification, eau évaporée, ajustements de lot."
+  }
+}

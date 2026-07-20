@@ -2,7 +2,12 @@ import { documents } from './data/index.js';
 
 const FAMILLES = {
   produit: 'Produit',
-  composition: 'Composition et matières'
+  composition: 'Composition et matières',
+  donnees: 'Données',
+  fabrication: 'Fabrication',
+  revendications: 'Revendications',
+  administratif: 'Administratif',
+  assemblage: 'Assemblage'
 };
 
 export default function App() {

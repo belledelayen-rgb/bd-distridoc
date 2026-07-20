@@ -1,13 +1,17 @@
 import communs from './champs/communs.json';
 import produit from './champs/produit.json';
 import matiere from './champs/matiere.json';
+import composition from './champs/composition.json';
+import emballage from './champs/emballage.json';
+import signature from './champs/signature.json';
 import documents from './documents.json';
 
-// Dictionnaires par domaine. Ajouter ici tout nouveau domaine de champs.
-export const dictionnaires = { communs, produit, matiere };
+// Dictionnaires par domaine. Ajouter ici tout nouveau domaine de champs,
+// et la ligne correspondante dans scripts/verifier-matrice.mjs.
+export const dictionnaires = { communs, produit, matiere, composition, emballage, signature };
 
 // Dictionnaire fusionné : identifiant de champ -> définition.
-export const champs = Object.assign({}, communs, produit, matiere);
+export const champs = Object.assign({}, ...Object.values(dictionnaires));
 
 export { documents };
 
