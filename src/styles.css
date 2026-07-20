@@ -320,31 +320,140 @@ body {
 .message-erreur { background: #f9e5df; color: #9c3a1c; }
 
 
-/* ── Bloc replié : résumé de la sélection ────────────────── */
+/* ── Fil des étapes ──────────────────────────────────────── */
 
-.bloc-replie { padding: 0; overflow: hidden; }
-
-.resume-choix {
+.fil-etapes {
   display: flex;
-  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.etape {
+  flex: 1;
+  display: flex;
   align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0.7rem 1.1rem;
-  border: 0;
-  background: var(--vert-clair);
-  color: var(--vert);
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--trait);
+  border-radius: var(--rayon);
+  background: var(--carte);
+  color: var(--discret);
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-align: left;
   cursor: pointer;
 }
 
-.resume-choix:hover { filter: brightness(0.97); }
+.etape:disabled { cursor: not-allowed; opacity: 0.55; }
 
-.lien-modifier {
+.etape.actuelle {
+  border-color: var(--vert);
+  background: var(--vert-clair);
+  color: var(--vert);
+  font-weight: 600;
+}
+
+.etape-numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--trait);
+  color: var(--carte);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.etape.actuelle .etape-numero { background: var(--vert); }
+
+/* ── Bouton principal et barre d'étape ───────────────────── */
+
+.barre-etape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--vert-clair);
+}
+
+.bouton-principal {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border: 0;
+  border-radius: var(--rayon);
+  background: var(--vert);
+  color: #fff;
+  cursor: pointer;
+}
+
+.bouton-principal:hover:not(:disabled) { filter: brightness(1.12); }
+
+.bouton-principal:disabled {
+  background: var(--trait);
+  color: var(--discret);
+  cursor: not-allowed;
+}
+
+/* ── Rappel de la sélection ──────────────────────────────── */
+
+.bloc-rappel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--vert-clair);
+  border-color: var(--vert-clair);
+}
+
+.retour {
+  border: 0;
+  background: none;
+  padding: 0;
   color: var(--ambre);
-  font-size: 0.84rem;
-  font-weight: 500;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
   white-space: nowrap;
+}
+
+.retour:hover { text-decoration: underline; }
+
+.rappel-liste {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--vert);
+  flex: 1;
+  min-width: 12rem;
+}
+
+/* ── Avancement ──────────────────────────────────────────── */
+
+.avancement { margin-bottom: 0.9rem; }
+
+.avancement-barre {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--trait);
+  overflow: hidden;
+}
+
+.avancement-fait {
+  height: 100%;
+  background: var(--vert-vif);
+  transition: width 0.25s;
+}
+
+.avancement-texte {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--discret);
 }

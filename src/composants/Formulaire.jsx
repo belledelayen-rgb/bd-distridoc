@@ -9,6 +9,11 @@ export default function Formulaire({ documentsChoisis, saisie }) {
   const groupes = champsRegroupes(documentsChoisis);
   const manquants = champsManquants(documentsChoisis, saisie.valeurs);
   const total = groupes.reduce((n, g) => n + g.champs.length, 0);
+  const requis = groupes.reduce(
+    (n, g) => n + g.champs.filter((id) => champs[id].requis).length, 0
+  );
+  const faits = requis - manquants.length;
+  const avancement = requis === 0 ? 100 : Math.round((faits / requis) * 100);
 
   const produire = async (idDoc) => {
     setEnCours(idDoc);
@@ -24,13 +29,22 @@ export default function Formulaire({ documentsChoisis, saisie }) {
   return (
     <section className="bloc">
       <h2>Renseignements</h2>
+
+      <div className="avancement">
+        <div className="avancement-barre">
+          <div className="avancement-fait" style={{ width: `${avancement}%` }} />
+        </div>
+        <p className="avancement-texte">
+          {manquants.length === 0
+            ? `Les ${requis} renseignements requis sont complétés.`
+            : `${faits} sur ${requis} renseignements requis`}
+        </p>
+      </div>
+
       <p className="note">
-        {total} renseignements pour {documentsChoisis.length} document
-        {documentsChoisis.length > 1 ? 's' : ''}.
-        {manquants.length > 0 && (
-          <> {manquants.length} requis {manquants.length > 1 ? 'restent' : 'reste'} à compléter.</>
-        )}
-        {manquants.length === 0 && total > 0 && <> Tous les requis sont renseignés.</>}
+        {total} renseignements en tout, dont {requis} requis. Vous pouvez ne
+        remplir que ce que vous connaissez : les rubriques laissées vides ne
+        sont pas imprimées.
       </p>
 
       {groupes.map((groupe) => (
