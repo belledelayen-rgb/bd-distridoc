@@ -462,5 +462,372 @@
         ]
       }
     ]
+  },
+  "physico_chimie": {
+    "famille": "donnees",
+    "titreFr": "Données physico-chimiques",
+    "titreEn": "Physicochemical data",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Conditions des mesures",
+        "titreEn": "Measurement conditions",
+        "champs": [
+          "essai_laboratoire",
+          "essai_date",
+          "essai_reference_rapport"
+        ]
+      },
+      {
+        "titreFr": "Résultats",
+        "titreEn": "Results",
+        "champs": [
+          "physico_lignes"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "stabilite_pao": {
+    "famille": "donnees",
+    "titreFr": "Stabilité et période après ouverture",
+    "titreEn": "Stability and period after opening",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Protocole de l'essai",
+        "titreEn": "Test protocol",
+        "champs": [
+          "stabilite_conditions",
+          "stabilite_duree",
+          "essai_laboratoire",
+          "essai_date"
+        ]
+      },
+      {
+        "titreFr": "Observations",
+        "titreEn": "Observations",
+        "champs": [
+          "stabilite_observations"
+        ]
+      },
+      {
+        "titreFr": "Durabilité retenue",
+        "titreEn": "Durability set",
+        "champs": [
+          "stabilite_duree_retenue",
+          "produit_pao",
+          "produit_ddm"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "microbiologie": {
+    "famille": "donnees",
+    "titreFr": "Données microbiologiques",
+    "titreEn": "Microbiological data",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Conditions de l'analyse",
+        "titreEn": "Analysis conditions",
+        "champs": [
+          "essai_laboratoire",
+          "essai_date",
+          "essai_reference_rapport"
+        ]
+      },
+      {
+        "titreFr": "Résultats",
+        "titreEn": "Results",
+        "champs": [
+          "microbio_lignes"
+        ]
+      },
+      {
+        "titreFr": "Absence d'analyse",
+        "titreEn": "No testing performed",
+        "champs": [
+          "microbio_dispense"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "toxicologie_substance": {
+    "famille": "donnees",
+    "titreFr": "Profil toxicologique par substance",
+    "titreEn": "Toxicological profile per substance",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Substance",
+        "titreEn": "Substance",
+        "champs": [
+          "toxico_substance"
+        ]
+      },
+      {
+        "titreFr": "Données disponibles",
+        "titreEn": "Available data",
+        "champs": [
+          "toxico_lignes"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "declaration_nanomateriaux": {
+    "famille": "donnees",
+    "titreFr": "Déclaration relative aux nanomatériaux",
+    "titreEn": "Declaration on nanomaterials",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Déclaration",
+        "titreEn": "Declaration",
+        "champs": [
+          "nano_presence",
+          "nano_lignes"
+        ]
+      },
+      {
+        "titreFr": "Signature",
+        "titreEn": "Signature",
+        "champs": [
+          "signature_nom",
+          "signature_qualite",
+          "signature_lieu",
+          "signature_date"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "bpf_iso_22716": {
+    "famille": "fabrication",
+    "titreFr": "Bonnes pratiques de fabrication (ISO 22716)",
+    "titreEn": "Good manufacturing practices (ISO 22716)",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Site et locaux",
+        "titreEn": "Site and premises",
+        "champs": [
+          "fab_site",
+          "fab_locaux",
+          "fab_equipements"
+        ]
+      },
+      {
+        "titreFr": "Personnel et hygiène",
+        "titreEn": "Personnel and hygiene",
+        "champs": [
+          "fab_personnel",
+          "fab_nettoyage"
+        ]
+      },
+      {
+        "titreFr": "Matières et stockage",
+        "titreEn": "Materials and storage",
+        "champs": [
+          "fab_matieres_reception",
+          "fab_stockage",
+          "fab_dechets"
+        ]
+      },
+      {
+        "titreFr": "Traçabilité et suites",
+        "titreEn": "Traceability and follow-up",
+        "champs": [
+          "fab_tracabilite",
+          "fab_reclamations"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "methode_fabrication": {
+    "famille": "fabrication",
+    "titreFr": "Méthode de fabrication",
+    "titreEn": "Manufacturing method",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot",
+          "produit_date_fabrication"
+        ]
+      },
+      {
+        "titreFr": "Déroulement",
+        "titreEn": "Process",
+        "champs": [
+          "fab_etapes"
+        ]
+      },
+      {
+        "titreFr": "Résultat",
+        "titreEn": "Outcome",
+        "champs": [
+          "fab_rendement"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "procedure_conditionnement": {
+    "famille": "fabrication",
+    "titreFr": "Procédure de conditionnement",
+    "titreEn": "Packaging procedure",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Déroulement",
+        "titreEn": "Process",
+        "champs": [
+          "cond_etapes"
+        ]
+      },
+      {
+        "titreFr": "Contrôles",
+        "titreEn": "Controls",
+        "champs": [
+          "cond_controle_masse",
+          "cond_etiquetage"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
   }
 }

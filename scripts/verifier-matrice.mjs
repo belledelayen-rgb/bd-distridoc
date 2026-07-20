@@ -8,7 +8,7 @@ import { validerMatriceAvec } from '../src/data/regles.js';
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const lire = (chemin) => JSON.parse(readFileSync(join(racine, chemin), 'utf8'));
 
-const DOMAINES = ['communs', 'produit', 'matiere', 'composition', 'emballage', 'signature'];
+const DOMAINES = ['communs', 'produit', 'matiere', 'composition', 'emballage', 'signature', 'donnees', 'fabrication'];
 const dictionnaires = Object.fromEntries(
   DOMAINES.map((d) => [d, lire(`src/data/champs/${d}.json`)])
 );
