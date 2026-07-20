@@ -42,7 +42,7 @@ export default function App() {
       <header className="entete">
         <h1>BD-DistriDoc</h1>
         <p className="baseline">
-          Generateur de documents professionnels au format PDF.
+          Générateur de documents professionnels au format PDF.
         </p>
       </header>
 
@@ -50,14 +50,14 @@ export default function App() {
         <h2>Principe</h2>
         <p>
           L&apos;outil met en forme les informations que vous saisissez. Il n&apos;invente
-          rien, ne suppose rien et ne complete aucune donnee manquante. Il ne
-          realise aucune evaluation de la securite et ne produit aucun rapport
-          sur la securite du produit cosmetique.
+          rien, ne suppose rien et ne complète aucune donnée manquante. Il ne
+          réalise aucune évaluation de la sécurité et ne produit aucun rapport
+          sur la sécurité du produit cosmétique.
         </p>
         <p>
-          <strong>Aucune donnee n&apos;est conservee.</strong> Tout reste dans votre
-          navigateur et disparait a la fermeture de la page. Rien n&apos;est envoye
-          a un serveur. Si vous souhaitez reprendre votre saisie plus tard,
+          <strong>Aucune donnée n&apos;est conservée.</strong> Tout reste dans votre
+          navigateur et disparaît à la fermeture de la page. Rien n&apos;est envoyé
+          à un serveur. Si vous souhaitez reprendre votre saisie plus tard,
           enregistrez un brouillon sur votre appareil.
         </p>
       </section>
@@ -75,7 +75,7 @@ export default function App() {
       <section className="bloc">
         <h2>Brouillon</h2>
         <p className="note">
-          Le brouillon est un fichier enregistre sur votre appareil. Il ne passe
+          Le brouillon est un fichier enregistré sur votre appareil. Il ne passe
           par aucun serveur.
         </p>
         {message && (

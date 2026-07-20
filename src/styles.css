@@ -220,3 +220,17 @@ body {
 .message-ok { background: #e8f0e9; color: #2c4a33; }
 
 .message-erreur { background: #f7e6e2; color: #7a2a18; }
+
+.production {
+  border-top: 2px solid var(--accent);
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+}
+
+.production h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
