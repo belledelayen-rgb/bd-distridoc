@@ -1,0 +1,141 @@
+{
+  "bpf_iso_22716": {
+    "famille": "fabrication",
+    "titreFr": "Bonnes pratiques de fabrication (ISO 22716)",
+    "titreEn": "Good manufacturing practices (ISO 22716)",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Site et locaux",
+        "titreEn": "Site and premises",
+        "champs": [
+          "fab_site",
+          "fab_locaux",
+          "fab_equipements"
+        ]
+      },
+      {
+        "titreFr": "Personnel et hygiène",
+        "titreEn": "Personnel and hygiene",
+        "champs": [
+          "fab_personnel",
+          "fab_nettoyage"
+        ]
+      },
+      {
+        "titreFr": "Matières et stockage",
+        "titreEn": "Materials and storage",
+        "champs": [
+          "fab_matieres_reception",
+          "fab_stockage",
+          "fab_dechets"
+        ]
+      },
+      {
+        "titreFr": "Traçabilité et suites",
+        "titreEn": "Traceability and follow-up",
+        "champs": [
+          "fab_tracabilite",
+          "fab_reclamations"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "methode_fabrication": {
+    "famille": "fabrication",
+    "titreFr": "Méthode de fabrication",
+    "titreEn": "Manufacturing method",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot",
+          "produit_date_fabrication"
+        ]
+      },
+      {
+        "titreFr": "Déroulement",
+        "titreEn": "Process",
+        "champs": [
+          "fab_etapes"
+        ]
+      },
+      {
+        "titreFr": "Résultat",
+        "titreEn": "Outcome",
+        "champs": [
+          "fab_rendement"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "procedure_conditionnement": {
+    "famille": "fabrication",
+    "titreFr": "Procédure de conditionnement",
+    "titreEn": "Packaging procedure",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Déroulement",
+        "titreEn": "Process",
+        "champs": [
+          "cond_etapes"
+        ]
+      },
+      {
+        "titreFr": "Contrôles",
+        "titreEn": "Controls",
+        "champs": [
+          "cond_controle_masse",
+          "cond_etiquetage"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  }
+}

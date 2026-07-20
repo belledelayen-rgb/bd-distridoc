@@ -1,0 +1,87 @@
+{
+  "page_garde_dossier": {
+    "famille": "assemblage",
+    "titreFr": "Page de garde du dossier",
+    "titreEn": "Dossier cover page",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Dossier",
+        "titreEn": "Dossier",
+        "champs": [
+          "dossier_titre",
+          "dossier_lieu_conservation"
+        ]
+      },
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_type",
+          "produit_contenance"
+        ]
+      },
+      {
+        "titreFr": "Responsable de la mise sur le marché",
+        "titreEn": "Responsible person",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "matrice_conformite": {
+    "famille": "assemblage",
+    "titreFr": "Matrice de conformité",
+    "titreEn": "Conformity matrix",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Dossier",
+        "titreEn": "Dossier",
+        "champs": [
+          "dossier_titre",
+          "produit_nom",
+          "produit_gamme"
+        ]
+      },
+      {
+        "titreFr": "Correspondance",
+        "titreEn": "Mapping",
+        "champs": [
+          "matrice_lignes"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  }
+}

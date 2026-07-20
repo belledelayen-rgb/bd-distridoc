@@ -1,0 +1,186 @@
+{
+  "ft_matiere_auto_produite": {
+    "famille": "composition",
+    "titreFr": "Fiche technique de matière première auto-produite",
+    "titreEn": "Technical data sheet for self-produced raw material",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Producteur",
+        "titreEn": "Producer",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Identification de la matière",
+        "titreEn": "Material identification",
+        "champs": [
+          "matiere_denomination",
+          "matiere_inci",
+          "matiere_fonction",
+          "matiere_cas",
+          "matiere_ce"
+        ]
+      },
+      {
+        "titreFr": "Composition",
+        "titreEn": "Composition",
+        "champs": [
+          "matiere_huiles_support",
+          "matiere_plantes"
+        ]
+      },
+      {
+        "titreFr": "Procédé de fabrication",
+        "titreEn": "Manufacturing process",
+        "champs": [
+          "matiere_procede",
+          "matiere_ratio",
+          "matiere_duree",
+          "matiere_temperature",
+          "matiere_filtration"
+        ]
+      },
+      {
+        "titreFr": "Caractéristiques",
+        "titreEn": "Characteristics",
+        "champs": [
+          "matiere_aspect",
+          "matiere_couleur",
+          "matiere_odeur",
+          "matiere_densite",
+          "matiere_indice_peroxyde",
+          "matiere_indice_acide"
+        ]
+      },
+      {
+        "titreFr": "Allergènes",
+        "titreEn": "Allergens",
+        "champs": [
+          "matiere_allergenes"
+        ]
+      },
+      {
+        "titreFr": "Conservation et traçabilité",
+        "titreEn": "Storage and traceability",
+        "champs": [
+          "matiere_antioxydant",
+          "matiere_conservation",
+          "matiere_dluo",
+          "matiere_date_fabrication",
+          "matiere_lot"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "composition_quali_quanti": {
+    "famille": "composition",
+    "titreFr": "Composition qualitative et quantitative",
+    "titreEn": "Qualitative and quantitative composition",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot",
+          "produit_date_fabrication"
+        ]
+      },
+      {
+        "titreFr": "Formule",
+        "titreEn": "Formula",
+        "champs": [
+          "composition_lignes",
+          "composition_observations"
+        ]
+      },
+      {
+        "titreFr": "Liste des ingrédients",
+        "titreEn": "List of ingredients",
+        "champs": [
+          "produit_inci",
+          "produit_allergenes"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "ft_emballage": {
+    "famille": "composition",
+    "titreFr": "Fiche technique d'emballage",
+    "titreEn": "Packaging technical data sheet",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Identification de l'emballage",
+        "titreEn": "Packaging identification",
+        "champs": [
+          "emballage_designation",
+          "emballage_type",
+          "emballage_materiau",
+          "emballage_capacite",
+          "emballage_fermeture",
+          "emballage_couleur"
+        ]
+      },
+      {
+        "titreFr": "Approvisionnement",
+        "titreEn": "Sourcing",
+        "champs": [
+          "emballage_fournisseur",
+          "emballage_reference"
+        ]
+      },
+      {
+        "titreFr": "Aptitude à l'emploi",
+        "titreEn": "Fitness for use",
+        "champs": [
+          "emballage_compatibilite",
+          "emballage_conformite",
+          "emballage_recyclabilite"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  }
+}

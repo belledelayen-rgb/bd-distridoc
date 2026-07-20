@@ -1,0 +1,108 @@
+{
+  "etab_activite": {
+    "libelleFr": "Nature de l'activité",
+    "libelleEn": "Nature of the activity",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Exemple : fabrication et conditionnement de savons saponifiés à froid."
+  },
+  "etab_date_debut": {
+    "libelleFr": "Date de début d'activité",
+    "libelleEn": "Activity start date",
+    "type": "date"
+  },
+  "etab_autorite": {
+    "libelleFr": "Autorité destinataire",
+    "libelleEn": "Recipient authority",
+    "type": "texte",
+    "aide": "Autorité à laquelle la déclaration est adressée."
+  },
+  "etab_categories": {
+    "libelleFr": "Catégories de produits fabriqués",
+    "libelleEn": "Categories of products manufactured",
+    "type": "texteLong"
+  },
+  "cpnp_numero": {
+    "libelleFr": "Numéro de notification",
+    "libelleEn": "Notification number",
+    "type": "texte",
+    "aide": "Numéro attribué par le portail européen après notification."
+  },
+  "cpnp_date": {
+    "libelleFr": "Date de notification",
+    "libelleEn": "Notification date",
+    "type": "date"
+  },
+  "cpnp_categorie": {
+    "libelleFr": "Catégorie du produit au portail",
+    "libelleEn": "Product category on the portal",
+    "type": "texte"
+  },
+  "cpnp_contact_urgence": {
+    "libelleFr": "Contact en cas d'urgence",
+    "libelleEn": "Emergency contact",
+    "type": "texte",
+    "aide": "Personne joignable par les centres antipoison."
+  },
+  "metro_instrument": {
+    "libelleFr": "Instrument de mesure",
+    "libelleEn": "Measuring instrument",
+    "type": "texte",
+    "requis": true,
+    "aide": "Marque, modèle et portée de la balance utilisée."
+  },
+  "metro_verification": {
+    "libelleFr": "Vérification de l'instrument",
+    "libelleEn": "Instrument verification",
+    "type": "texteLong",
+    "aide": "Date de la dernière vérification, organisme, masses étalons employées."
+  },
+  "metro_tolerance": {
+    "libelleFr": "Tolérance appliquée",
+    "libelleEn": "Applied tolerance",
+    "type": "texte"
+  },
+  "metro_releves": {
+    "libelleFr": "Relevés de contrôle",
+    "libelleEn": "Control readings",
+    "type": "tableau",
+    "colonnes": [
+      { "id": "date", "libelleFr": "Date", "libelleEn": "Date", "type": "texte" },
+      { "id": "lot", "libelleFr": "Lot", "libelleEn": "Batch", "type": "texte" },
+      { "id": "nominal", "libelleFr": "Valeur nominale", "libelleEn": "Nominal value", "type": "texte" },
+      { "id": "mesure", "libelleFr": "Valeur mesurée", "libelleEn": "Measured value", "type": "texte" },
+      { "id": "ecart", "libelleFr": "Écart", "libelleEn": "Deviation", "type": "texte" }
+    ]
+  },
+  "animale_portee": {
+    "libelleFr": "Portée de l'attestation",
+    "libelleEn": "Scope of the attestation",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Document interne au dossier (art. 11). Ne jamais reprendre cette mention comme allégation sur l'étiquette ou la publicité (art. 20 et règlement UE 655/2013)."
+  },
+  "dossier_titre": {
+    "libelleFr": "Titre du dossier",
+    "libelleEn": "Dossier title",
+    "type": "texte",
+    "requis": true
+  },
+  "dossier_lieu_conservation": {
+    "libelleFr": "Lieu de conservation du dossier",
+    "libelleEn": "Place where the dossier is kept",
+    "type": "texteLong",
+    "aide": "Adresse à laquelle le dossier est tenu à disposition des autorités (art. 11)."
+  },
+  "matrice_lignes": {
+    "libelleFr": "Correspondance exigences et documents",
+    "libelleEn": "Requirements to documents mapping",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "exigence", "libelleFr": "Exigence", "libelleEn": "Requirement", "type": "texte" },
+      { "id": "reference", "libelleFr": "Référence réglementaire", "libelleEn": "Regulatory reference", "type": "texte" },
+      { "id": "document", "libelleFr": "Document correspondant", "libelleEn": "Corresponding document", "type": "texte" },
+      { "id": "etat", "libelleFr": "État", "libelleEn": "Status", "type": "texte" }
+    ]
+  }
+}

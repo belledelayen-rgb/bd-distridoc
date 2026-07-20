@@ -1,0 +1,21 @@
+{
+  "revendication_lignes": {
+    "libelleFr": "Revendications et éléments de preuve",
+    "libelleEn": "Claims and supporting evidence",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "revendication", "libelleFr": "Revendication formulée", "libelleEn": "Claim made", "type": "texte" },
+      { "id": "support", "libelleFr": "Support", "libelleEn": "Medium", "type": "texte" },
+      { "id": "preuve", "libelleFr": "Élément de preuve", "libelleEn": "Supporting evidence", "type": "texte" },
+      { "id": "source", "libelleFr": "Source ou référence", "libelleEn": "Source or reference", "type": "texte" },
+      { "id": "date", "libelleFr": "Date", "libelleEn": "Date", "type": "texte" }
+    ],
+    "aide": "Une ligne par revendication. Chaque allégation doit reposer sur un élément vérifiable (règlement UE 655/2013). N'inscrivez pas une revendication que vous ne pouvez pas étayer."
+  },
+  "revendication_observations": {
+    "libelleFr": "Observations",
+    "libelleEn": "Notes",
+    "type": "texteLong"
+  }
+}

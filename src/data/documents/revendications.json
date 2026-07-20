@@ -1,0 +1,38 @@
+{
+  "preuves_efficacite": {
+    "famille": "revendications",
+    "titreFr": "Éléments de preuve des revendications",
+    "titreEn": "Evidence supporting claims",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Revendications",
+        "titreEn": "Claims",
+        "champs": [
+          "revendication_lignes",
+          "revendication_observations"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  }
+}

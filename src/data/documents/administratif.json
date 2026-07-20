@@ -1,0 +1,229 @@
+{
+  "declaration_etablissement": {
+    "famille": "administratif",
+    "titreFr": "Déclaration d'établissement",
+    "titreEn": "Establishment declaration",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Déclarant",
+        "titreEn": "Declarant",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Activité",
+        "titreEn": "Activity",
+        "champs": [
+          "etab_activite",
+          "etab_categories",
+          "etab_date_debut",
+          "fab_site"
+        ]
+      },
+      {
+        "titreFr": "Destinataire",
+        "titreEn": "Recipient",
+        "champs": [
+          "etab_autorite"
+        ]
+      },
+      {
+        "titreFr": "Signature",
+        "titreEn": "Signature",
+        "champs": [
+          "signature_nom",
+          "signature_qualite",
+          "signature_lieu",
+          "signature_date"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "fiche_cpnp": {
+    "famille": "administratif",
+    "titreFr": "Fiche de notification au portail européen",
+    "titreEn": "European portal notification sheet",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Responsable de la mise sur le marché",
+        "titreEn": "Responsible person",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Produit notifié",
+        "titreEn": "Notified product",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_type",
+          "produit_usage",
+          "cpnp_categorie"
+        ]
+      },
+      {
+        "titreFr": "Notification",
+        "titreEn": "Notification",
+        "champs": [
+          "cpnp_numero",
+          "cpnp_date"
+        ]
+      },
+      {
+        "titreFr": "Contact d'urgence et conservation",
+        "titreEn": "Emergency contact and record keeping",
+        "champs": [
+          "cpnp_contact_urgence",
+          "dossier_lieu_conservation"
+        ]
+      },
+      {
+        "titreFr": "Composition transmise",
+        "titreEn": "Composition submitted",
+        "champs": [
+          "produit_inci",
+          "produit_allergenes"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "controle_metrologique": {
+    "famille": "administratif",
+    "titreFr": "Contrôle métrologique",
+    "titreEn": "Metrological control",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_contenance"
+        ]
+      },
+      {
+        "titreFr": "Instrument",
+        "titreEn": "Instrument",
+        "champs": [
+          "metro_instrument",
+          "metro_verification",
+          "metro_tolerance"
+        ]
+      },
+      {
+        "titreFr": "Relevés",
+        "titreEn": "Readings",
+        "champs": [
+          "metro_releves"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "attestation_animale": {
+    "famille": "administratif",
+    "titreFr": "Attestation relative à l'expérimentation animale",
+    "titreEn": "Attestation on animal testing",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Déclarant",
+        "titreEn": "Declarant",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Produit concerné",
+        "titreEn": "Product concerned",
+        "champs": [
+          "produit_nom",
+          "produit_gamme"
+        ]
+      },
+      {
+        "titreFr": "Portée",
+        "titreEn": "Scope",
+        "champs": [
+          "animale_portee"
+        ]
+      },
+      {
+        "titreFr": "Signature",
+        "titreEn": "Signature",
+        "champs": [
+          "signature_nom",
+          "signature_qualite",
+          "signature_lieu",
+          "signature_date"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  }
+}

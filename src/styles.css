@@ -91,3 +91,17 @@ body {
   color: var(--encre-doux);
   margin: 0;
 }
+
+.famille { margin-bottom: 1.25rem; }
+
+.famille h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--encre-doux);
+  margin: 0 0 0.5rem;
+  border-bottom: 1px solid var(--trait);
+  padding-bottom: 0.25rem;
+}
+
+.compteur { margin-bottom: 1.25rem; }
