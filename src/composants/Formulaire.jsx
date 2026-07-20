@@ -1,11 +1,25 @@
-import { champs, champsRegroupes, champsManquants } from '../data/index.js';
+import { useState } from 'react';
+import { champs, documents, champsRegroupes, champsManquants } from '../data/index.js';
+import { telechargerDocument } from '../pdf/generer.js';
 import Champ from './Champ.jsx';
 
 /** Formulaire construit à partir des documents choisis. */
 export default function Formulaire({ documentsChoisis, saisie }) {
+  const [enCours, setEnCours] = useState(null);
   const groupes = champsRegroupes(documentsChoisis);
   const manquants = champsManquants(documentsChoisis, saisie.valeurs);
   const total = groupes.reduce((n, g) => n + g.champs.length, 0);
+
+  const produire = async (idDoc) => {
+    setEnCours(idDoc);
+    try {
+      await telechargerDocument(documents[idDoc], champs, saisie.valeurs, {
+        logo: saisie.valeurs.demandeur_logo || undefined
+      });
+    } finally {
+      setEnCours(null);
+    }
+  };
 
   return (
     <section className="bloc">
@@ -33,6 +47,27 @@ export default function Formulaire({ documentsChoisis, saisie }) {
           ))}
         </div>
       ))}
+
+      <div className="production">
+        <h3>Produire les documents</h3>
+        <p className="note">
+          Chaque document reprend uniquement les renseignements que vous avez
+          saisis. Les rubriques laissees vides ne sont pas imprimees.
+        </p>
+        <div className="barre-boutons">
+          {documentsChoisis.map((idDoc) => (
+            <button
+              key={idDoc}
+              type="button"
+              className="bouton-secondaire"
+              disabled={enCours !== null}
+              onClick={() => produire(idDoc)}
+            >
+              {enCours === idDoc ? 'Preparation…' : documents[idDoc].titreFr}
+            </button>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
