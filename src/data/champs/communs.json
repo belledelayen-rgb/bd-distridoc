@@ -1,0 +1,70 @@
+{
+  "demandeur_raison_sociale": {
+    "libelleFr": "Raison sociale du responsable",
+    "libelleEn": "Legal name of the responsible person",
+    "type": "texte",
+    "requis": true,
+    "aide": "Personne physique ou morale responsable de la mise sur le marché."
+  },
+  "demandeur_forme_juridique": {
+    "libelleFr": "Forme juridique",
+    "libelleEn": "Legal form",
+    "type": "texte"
+  },
+  "demandeur_adresse": {
+    "libelleFr": "Adresse complète",
+    "libelleEn": "Full address",
+    "type": "texteLong",
+    "requis": true
+  },
+  "demandeur_pays": {
+    "libelleFr": "Pays",
+    "libelleEn": "Country",
+    "type": "texte",
+    "requis": true
+  },
+  "demandeur_email": {
+    "libelleFr": "Adresse électronique",
+    "libelleEn": "E-mail address",
+    "type": "texte",
+    "requis": true
+  },
+  "demandeur_telephone": {
+    "libelleFr": "Téléphone",
+    "libelleEn": "Telephone",
+    "type": "texte"
+  },
+  "demandeur_identification": {
+    "libelleFr": "Numéro d'identification",
+    "libelleEn": "Identification number",
+    "type": "texte",
+    "aide": "SIRET, numéro de TVA intracommunautaire ou équivalent national."
+  },
+  "demandeur_logo": {
+    "libelleFr": "Logo (en-tête du document)",
+    "libelleEn": "Logo (document header)",
+    "type": "fichier",
+    "aide": "Image PNG ou JPEG. Reste dans votre navigateur, n'est jamais transmise."
+  },
+  "document_reference": {
+    "libelleFr": "Référence du document",
+    "libelleEn": "Document reference",
+    "type": "texte"
+  },
+  "document_version": {
+    "libelleFr": "Version",
+    "libelleEn": "Version",
+    "type": "texte"
+  },
+  "document_date": {
+    "libelleFr": "Date d'établissement",
+    "libelleEn": "Date of issue",
+    "type": "date",
+    "requis": true
+  },
+  "document_redacteur": {
+    "libelleFr": "Rédigé par",
+    "libelleEn": "Drawn up by",
+    "type": "texte"
+  }
+}

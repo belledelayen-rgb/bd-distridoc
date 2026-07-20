@@ -58,3 +58,36 @@ body {
 
 .bloc p { margin: 0 0 0.75rem; }
 .bloc p:last-child { margin-bottom: 0; }
+
+.liste-documents {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.liste-documents li {
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 0 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-titre { font-weight: 600; }
+
+.doc-meta {
+  font-size: 0.85rem;
+  color: var(--encre-doux);
+}
+
+.doc-en {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--encre-doux);
+}
+
+.note {
+  font-size: 0.9rem;
+  color: var(--encre-doux);
+  margin: 0;
+}

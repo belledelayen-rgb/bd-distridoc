@@ -1,0 +1,175 @@
+{
+  "fiche_descriptive_produit": {
+    "famille": "produit",
+    "titreFr": "Fiche descriptive du produit",
+    "titreEn": "Product description sheet",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Responsable de la mise sur le marché",
+        "titreEn": "Responsible person",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Identification du produit",
+        "titreEn": "Product identification",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "produit_type",
+          "produit_usage",
+          "produit_destination",
+          "produit_public",
+          "produit_contenance"
+        ]
+      },
+      {
+        "titreFr": "Caractéristiques organoleptiques",
+        "titreEn": "Organoleptic characteristics",
+        "champs": [
+          "produit_aspect",
+          "produit_couleur",
+          "produit_odeur",
+          "produit_ph"
+        ]
+      },
+      {
+        "titreFr": "Composition",
+        "titreEn": "Composition",
+        "champs": [
+          "produit_inci",
+          "produit_allergenes"
+        ]
+      },
+      {
+        "titreFr": "Utilisation",
+        "titreEn": "Use",
+        "champs": [
+          "produit_mode_emploi",
+          "produit_precautions",
+          "produit_pao",
+          "produit_ddm"
+        ]
+      },
+      {
+        "titreFr": "Fabrication et traçabilité",
+        "titreEn": "Manufacture and traceability",
+        "champs": [
+          "produit_lieu_fabrication",
+          "produit_date_fabrication",
+          "produit_numero_lot"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  },
+  "ft_matiere_auto_produite": {
+    "famille": "composition",
+    "titreFr": "Fiche technique de matière première auto-produite",
+    "titreEn": "Technical data sheet for self-produced raw material",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Producteur",
+        "titreEn": "Producer",
+        "champs": [
+          "demandeur_raison_sociale",
+          "demandeur_forme_juridique",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_identification"
+        ]
+      },
+      {
+        "titreFr": "Identification de la matière",
+        "titreEn": "Material identification",
+        "champs": [
+          "matiere_denomination",
+          "matiere_inci",
+          "matiere_fonction",
+          "matiere_cas",
+          "matiere_ce"
+        ]
+      },
+      {
+        "titreFr": "Composition",
+        "titreEn": "Composition",
+        "champs": [
+          "matiere_huiles_support",
+          "matiere_plantes"
+        ]
+      },
+      {
+        "titreFr": "Procédé de fabrication",
+        "titreEn": "Manufacturing process",
+        "champs": [
+          "matiere_procede",
+          "matiere_ratio",
+          "matiere_duree",
+          "matiere_temperature",
+          "matiere_filtration"
+        ]
+      },
+      {
+        "titreFr": "Caractéristiques",
+        "titreEn": "Characteristics",
+        "champs": [
+          "matiere_aspect",
+          "matiere_couleur",
+          "matiere_odeur",
+          "matiere_densite",
+          "matiere_indice_peroxyde",
+          "matiere_indice_acide"
+        ]
+      },
+      {
+        "titreFr": "Allergènes",
+        "titreEn": "Allergens",
+        "champs": [
+          "matiere_allergenes"
+        ]
+      },
+      {
+        "titreFr": "Conservation et traçabilité",
+        "titreEn": "Storage and traceability",
+        "champs": [
+          "matiere_antioxydant",
+          "matiere_conservation",
+          "matiere_dluo",
+          "matiere_date_fabrication",
+          "matiere_lot"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
+  }
+}
