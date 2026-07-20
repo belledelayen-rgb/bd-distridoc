@@ -56,7 +56,8 @@ export default function App() {
       <header className="entete">
         <h1>BD-DistriDoc</h1>
         <p className="baseline">
-          Générateur de documents professionnels au format PDF.
+          Générateur de documents professionnels au format PDF, pour les
+          produits cosmétiques.
         </p>
       </header>
 
@@ -90,6 +91,11 @@ export default function App() {
         <>
           <section className="bloc">
             <h2>Principe</h2>
+            <p>
+              Les documents proposés ici concernent les{' '}
+              <strong>produits cosmétiques</strong>. Les catégories détergents
+              et bougies sont prévues, elles ne sont pas encore disponibles.
+            </p>
             <p>
               L&apos;outil met en forme les informations que vous saisissez. Il n&apos;invente
               rien, ne suppose rien et ne complète aucune donnée manquante. Il ne

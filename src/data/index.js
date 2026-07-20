@@ -11,7 +11,7 @@ import administratif from './champs/administratif.json';
 import fds from './champs/fds.json';
 import docChamps from './champs/document.json';
 
-import { regrouperChamps, trouverManquants, indexerDomaines } from './regles.js';
+import { regrouperChamps, trouverManquants } from './regles.js';
 
 import docProduit from './documents/produit.json';
 import docComposition from './documents/composition.json';
@@ -47,7 +47,6 @@ export const catalogues = {
 // Vues fusionnées.
 export const champs = Object.assign({}, ...Object.values(dictionnaires));
 export const documents = Object.assign({}, ...Object.values(catalogues));
-const indexDomaines = indexerDomaines(dictionnaires);
 
 // Libellés lisibles des domaines de champs, pour regrouper la saisie.
 export const LIBELLES_DOMAINES = {
@@ -64,18 +63,6 @@ export const LIBELLES_DOMAINES = {
   fds: 'La fiche de données de sécurité',
   document: 'Établissement du document'
 };
-
-/** Domaine auquel appartient un champ. */
-export function domaineDuChamp(idChamp) {
-  return indexDomaines[idChamp];
-}
-
-/** Identifiants de champs cités par un document, dans l'ordre des sections. */
-export function champsDuDocument(idDocument) {
-  const doc = documents[idDocument];
-  if (!doc) return [];
-  return doc.sections.flatMap((section) => section.champs);
-}
 
 /** Champs des documents choisis, regroupés par domaine, avec libellés. */
 export function champsRegroupes(idsDocuments) {
