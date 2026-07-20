@@ -55,9 +55,25 @@
     "type": "tableau",
     "requis": true,
     "colonnes": [
-      { "id": "nom_inci", "libelleFr": "Nom INCI", "libelleEn": "INCI name", "type": "texte" },
-      { "id": "origine", "libelleFr": "Origine", "libelleEn": "Origin", "type": "texte" },
-      { "id": "pourcentage", "libelleFr": "Proportion", "libelleEn": "Proportion", "type": "nombre", "unite": "%" }
+      {
+        "id": "nom_inci",
+        "libelleFr": "Nom INCI",
+        "libelleEn": "INCI name",
+        "type": "texte"
+      },
+      {
+        "id": "origine",
+        "libelleFr": "Origine",
+        "libelleEn": "Origin",
+        "type": "texte"
+      },
+      {
+        "id": "pourcentage",
+        "libelleFr": "Proportion",
+        "libelleEn": "Proportion",
+        "type": "nombre",
+        "unite": "%"
+      }
     ],
     "aide": "Plusieurs huiles de support sont possibles. La somme des proportions doit être cohérente avec la formule."
   },
@@ -67,12 +83,43 @@
     "type": "tableau",
     "requis": true,
     "colonnes": [
-      { "id": "nom_commun", "libelleFr": "Nom commun", "libelleEn": "Common name", "type": "texte" },
-      { "id": "nom_botanique", "libelleFr": "Nom botanique", "libelleEn": "Botanical name", "type": "texte" },
-      { "id": "partie", "libelleFr": "Partie utilisée", "libelleEn": "Part used", "type": "texte" },
-      { "id": "etat", "libelleFr": "État", "libelleEn": "State", "type": "texte" },
-      { "id": "origine", "libelleFr": "Origine", "libelleEn": "Origin", "type": "texte" },
-      { "id": "pourcentage", "libelleFr": "Proportion", "libelleEn": "Proportion", "type": "nombre", "unite": "%" }
+      {
+        "id": "nom_commun",
+        "libelleFr": "Nom commun",
+        "libelleEn": "Common name",
+        "type": "texte"
+      },
+      {
+        "id": "nom_botanique",
+        "libelleFr": "Nom botanique",
+        "libelleEn": "Botanical name",
+        "type": "texte"
+      },
+      {
+        "id": "partie",
+        "libelleFr": "Partie utilisée",
+        "libelleEn": "Part used",
+        "type": "texte"
+      },
+      {
+        "id": "etat",
+        "libelleFr": "État",
+        "libelleEn": "State",
+        "type": "texte"
+      },
+      {
+        "id": "origine",
+        "libelleFr": "Origine",
+        "libelleEn": "Origin",
+        "type": "texte"
+      },
+      {
+        "id": "pourcentage",
+        "libelleFr": "Proportion",
+        "libelleEn": "Proportion",
+        "type": "nombre",
+        "unite": "%"
+      }
     ],
     "aide": "Plusieurs plantes sont possibles. Précisez l'état : frais, séché, stabilisé."
   },
@@ -82,10 +129,26 @@
     "type": "choix",
     "requis": true,
     "options": [
-      { "valeur": "froid", "libelleFr": "Macération à froid", "libelleEn": "Cold maceration" },
-      { "valeur": "solaire", "libelleFr": "Macération solaire", "libelleEn": "Solar maceration" },
-      { "valeur": "chaud", "libelleFr": "Macération à chaud", "libelleEn": "Hot maceration" },
-      { "valeur": "bain_marie", "libelleFr": "Macération au bain-marie", "libelleEn": "Bain-marie maceration" }
+      {
+        "valeur": "froid",
+        "libelleFr": "Macération à froid",
+        "libelleEn": "Cold maceration"
+      },
+      {
+        "valeur": "solaire",
+        "libelleFr": "Macération solaire",
+        "libelleEn": "Solar maceration"
+      },
+      {
+        "valeur": "chaud",
+        "libelleFr": "Macération à chaud",
+        "libelleEn": "Hot maceration"
+      },
+      {
+        "valeur": "bain_marie",
+        "libelleFr": "Macération au bain-marie",
+        "libelleEn": "Bain-marie maceration"
+      }
     ]
   },
   "matiere_ratio": {
@@ -132,6 +195,20 @@
     "libelleEn": "Density",
     "type": "nombre"
   },
+  "matiere_indice_peroxyde": {
+    "libelleFr": "Indice de peroxyde",
+    "libelleEn": "Peroxide value",
+    "type": "nombre",
+    "unite": "meq O2/kg",
+    "aide": "Facultatif. Laissez vide si aucune analyse n'a été réalisée."
+  },
+  "matiere_indice_acide": {
+    "libelleFr": "Indice d'acide",
+    "libelleEn": "Acid value",
+    "type": "nombre",
+    "unite": "mg KOH/g",
+    "aide": "Facultatif. Laissez vide si aucune analyse n'a été réalisée."
+  },
   "matiere_antioxydant": {
     "libelleFr": "Antioxydant ajouté",
     "libelleEn": "Added antioxidant",
@@ -148,8 +225,19 @@
     "libelleEn": "Allergens present",
     "type": "tableau",
     "colonnes": [
-      { "id": "nom_inci", "libelleFr": "Nom INCI", "libelleEn": "INCI name", "type": "texte" },
-      { "id": "concentration", "libelleFr": "Concentration", "libelleEn": "Concentration", "type": "nombre", "unite": "%" }
+      {
+        "id": "nom_inci",
+        "libelleFr": "Nom INCI",
+        "libelleEn": "INCI name",
+        "type": "texte"
+      },
+      {
+        "id": "concentration",
+        "libelleFr": "Concentration",
+        "libelleEn": "Concentration",
+        "type": "nombre",
+        "unite": "%"
+      }
     ]
   }
 }

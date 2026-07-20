@@ -34,27 +34,50 @@
       {
         "titreFr": "Caractéristiques organoleptiques",
         "titreEn": "Organoleptic characteristics",
-        "champs": ["produit_aspect", "produit_couleur", "produit_odeur", "produit_ph"]
+        "champs": [
+          "produit_aspect",
+          "produit_couleur",
+          "produit_odeur",
+          "produit_ph"
+        ]
       },
       {
         "titreFr": "Composition",
         "titreEn": "Composition",
-        "champs": ["produit_inci", "produit_allergenes"]
+        "champs": [
+          "produit_inci",
+          "produit_allergenes"
+        ]
       },
       {
         "titreFr": "Utilisation",
         "titreEn": "Use",
-        "champs": ["produit_mode_emploi", "produit_precautions", "produit_pao", "produit_ddm"]
+        "champs": [
+          "produit_mode_emploi",
+          "produit_precautions",
+          "produit_pao",
+          "produit_ddm"
+        ]
       },
       {
         "titreFr": "Fabrication et traçabilité",
         "titreEn": "Manufacture and traceability",
-        "champs": ["produit_lieu_fabrication", "produit_date_fabrication", "produit_numero_lot"]
+        "champs": [
+          "produit_lieu_fabrication",
+          "produit_date_fabrication",
+          "produit_numero_lot"
+        ]
       },
       {
         "titreFr": "Établissement du document",
         "titreEn": "Document issue",
-        "champs": ["document_reference", "document_version", "document_date", "document_redacteur", "demandeur_logo"]
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
       }
     ]
   },
@@ -90,7 +113,10 @@
       {
         "titreFr": "Composition",
         "titreEn": "Composition",
-        "champs": ["matiere_huiles_support", "matiere_plantes"]
+        "champs": [
+          "matiere_huiles_support",
+          "matiere_plantes"
+        ]
       },
       {
         "titreFr": "Procédé de fabrication",
@@ -106,12 +132,21 @@
       {
         "titreFr": "Caractéristiques",
         "titreEn": "Characteristics",
-        "champs": ["matiere_aspect", "matiere_couleur", "matiere_odeur", "matiere_densite"]
+        "champs": [
+          "matiere_aspect",
+          "matiere_couleur",
+          "matiere_odeur",
+          "matiere_densite",
+          "matiere_indice_peroxyde",
+          "matiere_indice_acide"
+        ]
       },
       {
         "titreFr": "Allergènes",
         "titreEn": "Allergens",
-        "champs": ["matiere_allergenes"]
+        "champs": [
+          "matiere_allergenes"
+        ]
       },
       {
         "titreFr": "Conservation et traçabilité",
@@ -127,7 +162,13 @@
       {
         "titreFr": "Établissement du document",
         "titreEn": "Document issue",
-        "champs": ["document_reference", "document_version", "document_date", "document_redacteur", "demandeur_logo"]
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
       }
     ]
   }
