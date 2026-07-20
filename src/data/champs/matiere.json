@@ -1,0 +1,155 @@
+{
+  "matiere_denomination": {
+    "libelleFr": "Dénomination de la matière",
+    "libelleEn": "Material name",
+    "type": "texte",
+    "requis": true,
+    "aide": "Exemple : macérat huileux de calendula sur huile de tournesol."
+  },
+  "matiere_inci": {
+    "libelleFr": "Dénomination INCI",
+    "libelleEn": "INCI name",
+    "type": "texte",
+    "requis": true,
+    "aide": "Un macérat se déclare par ses composants : huile de support puis extrait végétal."
+  },
+  "matiere_fonction": {
+    "libelleFr": "Fonction",
+    "libelleEn": "Function",
+    "type": "texte",
+    "requis": true,
+    "aide": "Fonction telle que référencée dans CosIng. Exemple : émollient, agent d'entretien de la peau."
+  },
+  "matiere_cas": {
+    "libelleFr": "Numéro CAS",
+    "libelleEn": "CAS number",
+    "type": "texte",
+    "aide": "À saisir manuellement d'après CosIng. Laissez vide si aucun numéro n'est attribué."
+  },
+  "matiere_ce": {
+    "libelleFr": "Numéro CE",
+    "libelleEn": "EC number",
+    "type": "texte",
+    "aide": "À saisir manuellement d'après CosIng."
+  },
+  "matiere_lot": {
+    "libelleFr": "Numéro de lot",
+    "libelleEn": "Batch number",
+    "type": "texte",
+    "requis": true
+  },
+  "matiere_date_fabrication": {
+    "libelleFr": "Date de fabrication",
+    "libelleEn": "Date of manufacture",
+    "type": "date",
+    "requis": true
+  },
+  "matiere_dluo": {
+    "libelleFr": "Durabilité minimale",
+    "libelleEn": "Minimum durability",
+    "type": "date"
+  },
+  "matiere_huiles_support": {
+    "libelleFr": "Huiles de support",
+    "libelleEn": "Carrier oils",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "nom_inci", "libelleFr": "Nom INCI", "libelleEn": "INCI name", "type": "texte" },
+      { "id": "origine", "libelleFr": "Origine", "libelleEn": "Origin", "type": "texte" },
+      { "id": "pourcentage", "libelleFr": "Proportion", "libelleEn": "Proportion", "type": "nombre", "unite": "%" }
+    ],
+    "aide": "Plusieurs huiles de support sont possibles. La somme des proportions doit être cohérente avec la formule."
+  },
+  "matiere_plantes": {
+    "libelleFr": "Plantes mises à macérer",
+    "libelleEn": "Macerated plants",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "nom_commun", "libelleFr": "Nom commun", "libelleEn": "Common name", "type": "texte" },
+      { "id": "nom_botanique", "libelleFr": "Nom botanique", "libelleEn": "Botanical name", "type": "texte" },
+      { "id": "partie", "libelleFr": "Partie utilisée", "libelleEn": "Part used", "type": "texte" },
+      { "id": "etat", "libelleFr": "État", "libelleEn": "State", "type": "texte" },
+      { "id": "origine", "libelleFr": "Origine", "libelleEn": "Origin", "type": "texte" },
+      { "id": "pourcentage", "libelleFr": "Proportion", "libelleEn": "Proportion", "type": "nombre", "unite": "%" }
+    ],
+    "aide": "Plusieurs plantes sont possibles. Précisez l'état : frais, séché, stabilisé."
+  },
+  "matiere_procede": {
+    "libelleFr": "Procédé de macération",
+    "libelleEn": "Maceration process",
+    "type": "choix",
+    "requis": true,
+    "options": [
+      { "valeur": "froid", "libelleFr": "Macération à froid", "libelleEn": "Cold maceration" },
+      { "valeur": "solaire", "libelleFr": "Macération solaire", "libelleEn": "Solar maceration" },
+      { "valeur": "chaud", "libelleFr": "Macération à chaud", "libelleEn": "Hot maceration" },
+      { "valeur": "bain_marie", "libelleFr": "Macération au bain-marie", "libelleEn": "Bain-marie maceration" }
+    ]
+  },
+  "matiere_ratio": {
+    "libelleFr": "Ratio plante sur huile",
+    "libelleEn": "Plant to oil ratio",
+    "type": "texte",
+    "aide": "Exemple : 1 part de plante séchée pour 5 parts d'huile."
+  },
+  "matiere_duree": {
+    "libelleFr": "Durée de macération",
+    "libelleEn": "Maceration time",
+    "type": "nombre",
+    "unite": "jours"
+  },
+  "matiere_temperature": {
+    "libelleFr": "Température de macération",
+    "libelleEn": "Maceration temperature",
+    "type": "nombre",
+    "unite": "°C"
+  },
+  "matiere_filtration": {
+    "libelleFr": "Filtration",
+    "libelleEn": "Filtration",
+    "type": "texte",
+    "aide": "Exemple : filtration sur toile de coton puis décantation."
+  },
+  "matiere_aspect": {
+    "libelleFr": "Aspect",
+    "libelleEn": "Appearance",
+    "type": "texte"
+  },
+  "matiere_couleur": {
+    "libelleFr": "Couleur",
+    "libelleEn": "Colour",
+    "type": "texte"
+  },
+  "matiere_odeur": {
+    "libelleFr": "Odeur",
+    "libelleEn": "Odour",
+    "type": "texte"
+  },
+  "matiere_densite": {
+    "libelleFr": "Densité",
+    "libelleEn": "Density",
+    "type": "nombre"
+  },
+  "matiere_antioxydant": {
+    "libelleFr": "Antioxydant ajouté",
+    "libelleEn": "Added antioxidant",
+    "type": "texte",
+    "aide": "Exemple : vitamine E. Laissez vide si aucun."
+  },
+  "matiere_conservation": {
+    "libelleFr": "Conditions de conservation",
+    "libelleEn": "Storage conditions",
+    "type": "texteLong"
+  },
+  "matiere_allergenes": {
+    "libelleFr": "Allergènes présents",
+    "libelleEn": "Allergens present",
+    "type": "tableau",
+    "colonnes": [
+      { "id": "nom_inci", "libelleFr": "Nom INCI", "libelleEn": "INCI name", "type": "texte" },
+      { "id": "concentration", "libelleFr": "Concentration", "libelleEn": "Concentration", "type": "nombre", "unite": "%" }
+    ]
+  }
+}

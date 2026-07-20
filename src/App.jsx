@@ -1,4 +1,13 @@
+import { documents } from './data/index.js';
+
+const FAMILLES = {
+  produit: 'Produit',
+  composition: 'Composition et matières'
+};
+
 export default function App() {
+  const liste = Object.entries(documents);
+
   return (
     <main className="page">
       <header className="entete">
@@ -23,10 +32,21 @@ export default function App() {
       </section>
 
       <section className="bloc">
-        <h2>Etat</h2>
-        <p>
-          Squelette initial deploye. Le formulaire et les gabarits de documents
-          arrivent dans les lots suivants.
+        <h2>Documents disponibles</h2>
+        <ul className="liste-documents">
+          {liste.map(([id, doc]) => (
+            <li key={id}>
+              <span className="doc-titre">{doc.titreFr}</span>
+              <span className="doc-meta">
+                {FAMILLES[doc.famille] || doc.famille} · {doc.sections.length} sections
+              </span>
+              <span className="doc-en">{doc.titreEn}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="note">
+          Le formulaire de saisie arrive au lot suivant. D&apos;autres documents
+          viendront completer ce catalogue.
         </p>
       </section>
     </main>

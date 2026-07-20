@@ -1,0 +1,99 @@
+const TYPES_CONNUS = ['texte', 'texteLong', 'nombre', 'date', 'booleen', 'choix', 'tableau', 'fichier'];
+
+/**
+ * Contrôle de cohérence de la matrice de documents.
+ * Fonction pure : elle ne lit aucun fichier et ne dépend d'aucune saisie utilisateur.
+ * @param {Record<string, object>} dictionnaires domaine -> dictionnaire de champs
+ * @param {object} documents catalogue des documents
+ * @returns {{valide: boolean, erreurs: string[], avertissements: string[], statistiques: object}}
+ */
+export function validerMatriceAvec(dictionnaires, documents) {
+  const erreurs = [];
+  const avertissements = [];
+
+  // 1. Un identifiant de champ ne doit exister que dans un seul dictionnaire.
+  const champs = {};
+  const origine = new Map();
+  for (const [domaine, dico] of Object.entries(dictionnaires)) {
+    for (const [id, def] of Object.entries(dico)) {
+      if (origine.has(id)) {
+        erreurs.push(`Champ « ${id} » défini deux fois : ${origine.get(id)} et ${domaine}.`);
+      } else {
+        origine.set(id, domaine);
+      }
+      champs[id] = def;
+    }
+  }
+
+  // 2. Chaque définition de champ doit être exploitable.
+  for (const [id, def] of Object.entries(champs)) {
+    if (!def.libelleFr) erreurs.push(`Champ « ${id} » : libellé français manquant.`);
+    if (!def.libelleEn) erreurs.push(`Champ « ${id} » : libellé anglais manquant.`);
+    if (!TYPES_CONNUS.includes(def.type)) {
+      erreurs.push(`Champ « ${id} » : type « ${def.type} » inconnu.`);
+    }
+    if (def.type === 'choix' && !(def.options || []).length) {
+      erreurs.push(`Champ « ${id} » : type « choix » sans options.`);
+    }
+    if (def.type === 'tableau' && !(def.colonnes || []).length) {
+      erreurs.push(`Champ « ${id} » : type « tableau » sans colonnes.`);
+    }
+    for (const option of def.options || []) {
+      if (!option.valeur) erreurs.push(`Champ « ${id} » : une option n'a pas de valeur.`);
+      if (!option.libelleFr || !option.libelleEn) {
+        erreurs.push(`Champ « ${id} », option « ${option.valeur} » : libellé bilingue incomplet.`);
+      }
+    }
+    for (const colonne of def.colonnes || []) {
+      if (!colonne.id) erreurs.push(`Champ « ${id} » : une colonne n'a pas d'identifiant.`);
+      if (!colonne.libelleFr || !colonne.libelleEn) {
+        erreurs.push(`Champ « ${id} », colonne « ${colonne.id} » : libellé bilingue incomplet.`);
+      }
+    }
+  }
+
+  // 3. Chaque document doit être complet et ne citer que des champs existants.
+  const cites = new Set();
+  for (const [idDoc, doc] of Object.entries(documents)) {
+    if (!doc.titreFr || !doc.titreEn) {
+      erreurs.push(`Document « ${idDoc} » : titre bilingue incomplet.`);
+    }
+    if (!doc.famille) erreurs.push(`Document « ${idDoc} » : famille manquante.`);
+    if (!(doc.sections || []).length) erreurs.push(`Document « ${idDoc} » : aucune section.`);
+
+    const dansLeDocument = new Set();
+    for (const section of doc.sections || []) {
+      if (!section.titreFr || !section.titreEn) {
+        erreurs.push(`Document « ${idDoc} » : section au titre bilingue incomplet.`);
+      }
+      for (const idChamp of section.champs || []) {
+        if (!champs[idChamp]) {
+          erreurs.push(`Document « ${idDoc} » : champ inconnu « ${idChamp} ».`);
+        }
+        if (dansLeDocument.has(idChamp)) {
+          erreurs.push(`Document « ${idDoc} » : champ « ${idChamp} » cité deux fois.`);
+        }
+        dansLeDocument.add(idChamp);
+        cites.add(idChamp);
+      }
+    }
+  }
+
+  // 4. Un champ défini mais jamais cité serait du code mort.
+  for (const id of Object.keys(champs)) {
+    if (!cites.has(id)) {
+      avertissements.push(`Champ « ${id} » défini mais cité par aucun document.`);
+    }
+  }
+
+  return {
+    valide: erreurs.length === 0,
+    erreurs,
+    avertissements,
+    statistiques: {
+      champs: Object.keys(champs).length,
+      champsCites: cites.size,
+      documents: Object.keys(documents).length
+    }
+  };
+}
