@@ -11,7 +11,7 @@ const lire = (chemin) => JSON.parse(readFileSync(join(racine, chemin), 'utf8'));
 // Doit rester aligné sur src/data/index.js.
 const DOMAINES = [
   'communs', 'produit', 'matiere', 'composition', 'emballage',
-  'signature', 'donnees', 'fabrication', 'revendications', 'administratif'
+  'signature', 'donnees', 'fabrication', 'revendications', 'administratif', 'fds'
 ];
 const FAMILLES = [
   'produit', 'composition', 'donnees', 'fabrication',

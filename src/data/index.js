@@ -8,6 +8,7 @@ import donnees from './champs/donnees.json';
 import fabrication from './champs/fabrication.json';
 import revendications from './champs/revendications.json';
 import administratif from './champs/administratif.json';
+import fds from './champs/fds.json';
 
 import docProduit from './documents/produit.json';
 import docComposition from './documents/composition.json';
@@ -22,7 +23,7 @@ import docAssemblage from './documents/assemblage.json';
 // scripts/verifier-matrice.mjs.
 export const dictionnaires = {
   communs, produit, matiere, composition, emballage,
-  signature, donnees, fabrication, revendications, administratif
+  signature, donnees, fabrication, revendications, administratif, fds
 };
 
 // Catalogues de documents, par famille. Le nom de la clé fait foi :

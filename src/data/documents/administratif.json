@@ -225,5 +225,146 @@
         ]
       }
     ]
+  },
+  "fds_produit_fini": {
+    "famille": "administratif",
+    "titreFr": "Fiche de données de sécurité",
+    "titreEn": "Safety data sheet",
+    "statut": "actif",
+    "sections": [
+      {
+        "titreFr": "Rubrique 1 — Identification du mélange et du fournisseur",
+        "titreEn": "Section 1 - Identification of the mixture and of the supplier",
+        "champs": [
+          "produit_nom",
+          "produit_gamme",
+          "fds_utilisations",
+          "demandeur_raison_sociale",
+          "demandeur_adresse",
+          "demandeur_pays",
+          "demandeur_email",
+          "demandeur_telephone",
+          "fds_numero_urgence"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 2 — Identification des dangers",
+        "titreEn": "Section 2 - Hazards identification",
+        "champs": [
+          "fds_classification",
+          "fds_etiquetage",
+          "fds_autres_dangers"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 3 — Composition et informations sur les composants",
+        "titreEn": "Section 3 - Composition and information on ingredients",
+        "champs": [
+          "composition_lignes"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 4 — Premiers secours",
+        "titreEn": "Section 4 - First aid measures",
+        "champs": [
+          "fds_premiers_secours"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 5 — Lutte contre l'incendie",
+        "titreEn": "Section 5 - Firefighting measures",
+        "champs": [
+          "fds_incendie"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 6 — Dispersion accidentelle",
+        "titreEn": "Section 6 - Accidental release measures",
+        "champs": [
+          "fds_dispersion"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 7 — Manipulation et stockage",
+        "titreEn": "Section 7 - Handling and storage",
+        "champs": [
+          "fds_manipulation"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 8 — Contrôles de l'exposition et protection individuelle",
+        "titreEn": "Section 8 - Exposure controls and personal protection",
+        "champs": [
+          "fds_exposition"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 9 — Propriétés physiques et chimiques",
+        "titreEn": "Section 9 - Physical and chemical properties",
+        "champs": [
+          "physico_lignes"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 10 — Stabilité et réactivité",
+        "titreEn": "Section 10 - Stability and reactivity",
+        "champs": [
+          "fds_stabilite"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 11 — Informations toxicologiques",
+        "titreEn": "Section 11 - Toxicological information",
+        "champs": [
+          "fds_toxicologie"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 12 — Informations écologiques",
+        "titreEn": "Section 12 - Ecological information",
+        "champs": [
+          "fds_ecologie"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 13 — Élimination",
+        "titreEn": "Section 13 - Disposal considerations",
+        "champs": [
+          "fds_elimination"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 14 — Informations relatives au transport",
+        "titreEn": "Section 14 - Transport information",
+        "champs": [
+          "fds_transport"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 15 — Informations réglementaires",
+        "titreEn": "Section 15 - Regulatory information",
+        "champs": [
+          "fds_reglementation"
+        ]
+      },
+      {
+        "titreFr": "Rubrique 16 — Autres informations",
+        "titreEn": "Section 16 - Other information",
+        "champs": [
+          "fds_autres_informations"
+        ]
+      },
+      {
+        "titreFr": "Établissement du document",
+        "titreEn": "Document issue",
+        "champs": [
+          "document_reference",
+          "document_version",
+          "document_date",
+          "document_redacteur",
+          "demandeur_logo"
+        ]
+      }
+    ]
   }
 }
