@@ -1,0 +1,26 @@
+{
+  "signature_lieu": {
+    "libelleFr": "Fait à",
+    "libelleEn": "Place of signature",
+    "type": "texte",
+    "requis": true
+  },
+  "signature_date": {
+    "libelleFr": "Le",
+    "libelleEn": "Date of signature",
+    "type": "date",
+    "requis": true
+  },
+  "signature_nom": {
+    "libelleFr": "Nom du signataire",
+    "libelleEn": "Name of signatory",
+    "type": "texte",
+    "requis": true
+  },
+  "signature_qualite": {
+    "libelleFr": "Qualité du signataire",
+    "libelleEn": "Capacity of signatory",
+    "type": "texte",
+    "aide": "Exemple : gérant, personne responsable."
+  }
+}

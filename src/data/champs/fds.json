@@ -1,0 +1,105 @@
+{
+  "fds_utilisations": {
+    "libelleFr": "Utilisations identifiées et déconseillées",
+    "libelleEn": "Identified and advised against uses",
+    "type": "texteLong",
+    "requis": true
+  },
+  "fds_numero_urgence": {
+    "libelleFr": "Numéro d'appel d'urgence",
+    "libelleEn": "Emergency telephone number",
+    "type": "texte",
+    "aide": "Numéro du centre antipoison compétent, ou votre propre numéro joignable."
+  },
+  "fds_classification": {
+    "libelleFr": "Classification du mélange",
+    "libelleEn": "Classification of the mixture",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Classification au titre du règlement CLP 1272/2008, ou mention que le mélange n'est pas classé dangereux. Cet outil ne calcule aucune classification : reportez celle que vous avez établie ou fait établir."
+  },
+  "fds_etiquetage": {
+    "libelleFr": "Éléments d'étiquetage",
+    "libelleEn": "Label elements",
+    "type": "texteLong",
+    "aide": "Pictogrammes, mention d'avertissement, mentions de danger et conseils de prudence. Laissez vide si le mélange n'est pas classé."
+  },
+  "fds_autres_dangers": {
+    "libelleFr": "Autres dangers",
+    "libelleEn": "Other hazards",
+    "type": "texteLong"
+  },
+  "fds_premiers_secours": {
+    "libelleFr": "Premiers secours",
+    "libelleEn": "First aid measures",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Conduite à tenir par voie d'exposition : inhalation, contact cutané, contact oculaire, ingestion."
+  },
+  "fds_incendie": {
+    "libelleFr": "Lutte contre l'incendie",
+    "libelleEn": "Firefighting measures",
+    "type": "texteLong",
+    "aide": "Moyens d'extinction appropriés et inappropriés, dangers particuliers, protection des intervenants."
+  },
+  "fds_dispersion": {
+    "libelleFr": "Dispersion accidentelle",
+    "libelleEn": "Accidental release measures",
+    "type": "texteLong",
+    "aide": "Précautions individuelles, précautions pour l'environnement, méthodes de nettoyage."
+  },
+  "fds_manipulation": {
+    "libelleFr": "Manipulation et stockage",
+    "libelleEn": "Handling and storage",
+    "type": "texteLong"
+  },
+  "fds_exposition": {
+    "libelleFr": "Contrôles de l'exposition et protection individuelle",
+    "libelleEn": "Exposure controls and personal protection",
+    "type": "texteLong",
+    "aide": "Valeurs limites d'exposition si elles existent, protection des yeux, de la peau et des voies respiratoires."
+  },
+  "fds_stabilite": {
+    "libelleFr": "Stabilité et réactivité",
+    "libelleEn": "Stability and reactivity",
+    "type": "texteLong",
+    "aide": "Conditions et matières à éviter, produits de décomposition dangereux."
+  },
+  "fds_toxicologie": {
+    "libelleFr": "Informations toxicologiques",
+    "libelleEn": "Toxicological information",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Effets observés par voie d'exposition, d'après vos sources documentaires. N'en tirez aucune conclusion d'évaluation."
+  },
+  "fds_ecologie": {
+    "libelleFr": "Informations écologiques",
+    "libelleEn": "Ecological information",
+    "type": "texteLong",
+    "aide": "Toxicité aquatique, biodégradabilité, mobilité, d'après les données dont vous disposez."
+  },
+  "fds_elimination": {
+    "libelleFr": "Élimination",
+    "libelleEn": "Disposal considerations",
+    "type": "texteLong",
+    "aide": "Traitement des résidus et des emballages souillés, filière de collecte."
+  },
+  "fds_transport": {
+    "libelleFr": "Informations relatives au transport",
+    "libelleEn": "Transport information",
+    "type": "texteLong",
+    "aide": "Numéro ONU, désignation officielle, classe et groupe d'emballage, ou mention de non-soumission aux règlements de transport."
+  },
+  "fds_reglementation": {
+    "libelleFr": "Informations réglementaires",
+    "libelleEn": "Regulatory information",
+    "type": "texteLong",
+    "aide": "Textes applicables au mélange et à ses composants, restrictions éventuelles."
+  },
+  "fds_autres_informations": {
+    "libelleFr": "Autres informations",
+    "libelleEn": "Other information",
+    "type": "texteLong",
+    "aide": "Texte intégral des mentions de danger citées, sources utilisées, date de révision, abréviations."
+  }
+}

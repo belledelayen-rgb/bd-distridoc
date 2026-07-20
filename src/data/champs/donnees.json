@@ -1,0 +1,121 @@
+{
+  "essai_laboratoire": {
+    "libelleFr": "Laboratoire ou opérateur",
+    "libelleEn": "Laboratory or operator",
+    "type": "texte",
+    "aide": "Indiquez qui a réalisé les mesures : laboratoire externe ou vous-même en atelier."
+  },
+  "essai_date": {
+    "libelleFr": "Date des mesures",
+    "libelleEn": "Date of measurements",
+    "type": "date"
+  },
+  "essai_reference_rapport": {
+    "libelleFr": "Référence du rapport",
+    "libelleEn": "Report reference",
+    "type": "texte",
+    "aide": "Référence du rapport d'analyse, si un rapport externe existe."
+  },
+  "physico_lignes": {
+    "libelleFr": "Résultats physico-chimiques",
+    "libelleEn": "Physicochemical results",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "parametre", "libelleFr": "Paramètre", "libelleEn": "Parameter", "type": "texte" },
+      { "id": "methode", "libelleFr": "Méthode", "libelleEn": "Method", "type": "texte" },
+      { "id": "resultat", "libelleFr": "Résultat", "libelleEn": "Result", "type": "texte" },
+      { "id": "unite", "libelleFr": "Unité", "libelleEn": "Unit", "type": "texte" }
+    ],
+    "aide": "N'inscrivez que des valeurs réellement mesurées. Laissez la ligne de côté si le paramètre n'a pas été mesuré."
+  },
+  "stabilite_conditions": {
+    "libelleFr": "Conditions de l'essai de stabilité",
+    "libelleEn": "Stability test conditions",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Température, humidité, exposition à la lumière, type de contenant utilisé pour l'essai."
+  },
+  "stabilite_duree": {
+    "libelleFr": "Durée de l'essai",
+    "libelleEn": "Test duration",
+    "type": "nombre",
+    "unite": "mois"
+  },
+  "stabilite_observations": {
+    "libelleFr": "Observations aux différentes échéances",
+    "libelleEn": "Observations at each time point",
+    "type": "tableau",
+    "colonnes": [
+      { "id": "echeance", "libelleFr": "Échéance", "libelleEn": "Time point", "type": "texte" },
+      { "id": "aspect", "libelleFr": "Aspect", "libelleEn": "Appearance", "type": "texte" },
+      { "id": "couleur", "libelleFr": "Couleur", "libelleEn": "Colour", "type": "texte" },
+      { "id": "odeur", "libelleFr": "Odeur", "libelleEn": "Odour", "type": "texte" },
+      { "id": "ph", "libelleFr": "pH", "libelleEn": "pH", "type": "texte" },
+      { "id": "observation", "libelleFr": "Observation", "libelleEn": "Observation", "type": "texte" }
+    ]
+  },
+  "stabilite_duree_retenue": {
+    "libelleFr": "Durabilité retenue par le fabricant",
+    "libelleEn": "Durability set by the manufacturer",
+    "type": "texte",
+    "aide": "Durée que VOUS retenez au vu de vos observations. Cet outil ne la déduit pas et ne la valide pas."
+  },
+  "microbio_lignes": {
+    "libelleFr": "Résultats microbiologiques",
+    "libelleEn": "Microbiological results",
+    "type": "tableau",
+    "colonnes": [
+      { "id": "recherche", "libelleFr": "Recherche", "libelleEn": "Test", "type": "texte" },
+      { "id": "methode", "libelleFr": "Méthode", "libelleEn": "Method", "type": "texte" },
+      { "id": "resultat", "libelleFr": "Résultat", "libelleEn": "Result", "type": "texte" },
+      { "id": "limite", "libelleFr": "Limite appliquée", "libelleEn": "Applied limit", "type": "texte" }
+    ]
+  },
+  "microbio_dispense": {
+    "libelleFr": "Motif de dispense d'analyse",
+    "libelleEn": "Grounds for exemption from testing",
+    "type": "texteLong",
+    "aide": "Si le produit relève des produits à faible risque microbiologique (ISO 29621), exposez le motif factuel : produit anhydre, pH très élevé, absence d'eau libre."
+  },
+  "toxico_substance": {
+    "libelleFr": "Substance concernée",
+    "libelleEn": "Substance concerned",
+    "type": "texte",
+    "requis": true
+  },
+  "toxico_lignes": {
+    "libelleFr": "Données toxicologiques disponibles",
+    "libelleEn": "Available toxicological data",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "parametre", "libelleFr": "Paramètre", "libelleEn": "Parameter", "type": "texte" },
+      { "id": "valeur", "libelleFr": "Valeur", "libelleEn": "Value", "type": "texte" },
+      { "id": "source", "libelleFr": "Source", "libelleEn": "Source", "type": "texte" }
+    ],
+    "aide": "Recopiez les données de vos fiches fournisseurs ou des avis publiés, avec leur source. N'en tirez aucune conclusion : l'évaluation relève du seul évaluateur de la sécurité."
+  },
+  "nano_presence": {
+    "libelleFr": "Présence de nanomatériaux",
+    "libelleEn": "Presence of nanomaterials",
+    "type": "choix",
+    "requis": true,
+    "options": [
+      { "valeur": "non", "libelleFr": "Aucun nanomatériau", "libelleEn": "No nanomaterial" },
+      { "valeur": "oui", "libelleFr": "Présence de nanomatériaux", "libelleEn": "Nanomaterials present" }
+    ]
+  },
+  "nano_lignes": {
+    "libelleFr": "Nanomatériaux présents",
+    "libelleEn": "Nanomaterials present",
+    "type": "tableau",
+    "colonnes": [
+      { "id": "substance", "libelleFr": "Substance", "libelleEn": "Substance", "type": "texte" },
+      { "id": "taille", "libelleFr": "Taille des particules", "libelleEn": "Particle size", "type": "texte" },
+      { "id": "forme", "libelleFr": "Forme", "libelleEn": "Shape", "type": "texte" },
+      { "id": "quantite", "libelleFr": "Quantité", "libelleEn": "Quantity", "type": "texte" }
+    ],
+    "aide": "À remplir uniquement si vous avez répondu qu'il y a présence de nanomatériaux."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "fab_site": {
+    "libelleFr": "Site de fabrication",
+    "libelleEn": "Manufacturing site",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Adresse et description sommaire du local de fabrication."
+  },
+  "fab_locaux": {
+    "libelleFr": "Locaux et surfaces",
+    "libelleEn": "Premises and surfaces",
+    "type": "texteLong",
+    "aide": "Nature des sols, murs et plans de travail, séparation des zones, aération."
+  },
+  "fab_equipements": {
+    "libelleFr": "Équipements",
+    "libelleEn": "Equipment",
+    "type": "texteLong",
+    "aide": "Matériel utilisé, matériaux au contact du produit, entretien."
+  },
+  "fab_personnel": {
+    "libelleFr": "Personnel et hygiène",
+    "libelleEn": "Personnel and hygiene",
+    "type": "texteLong",
+    "aide": "Tenue, lavage des mains, formation, règles applicables aux visiteurs."
+  },
+  "fab_nettoyage": {
+    "libelleFr": "Nettoyage et désinfection",
+    "libelleEn": "Cleaning and sanitation",
+    "type": "texteLong",
+    "aide": "Produits employés, fréquences, enregistrement des opérations."
+  },
+  "fab_matieres_reception": {
+    "libelleFr": "Réception et contrôle des matières premières",
+    "libelleEn": "Receipt and control of raw materials",
+    "type": "texteLong"
+  },
+  "fab_stockage": {
+    "libelleFr": "Stockage",
+    "libelleEn": "Storage",
+    "type": "texteLong",
+    "aide": "Conditions de stockage des matières premières, des articles de conditionnement et des produits finis."
+  },
+  "fab_tracabilite": {
+    "libelleFr": "Traçabilité et numérotation des lots",
+    "libelleEn": "Traceability and batch numbering",
+    "type": "texteLong",
+    "requis": true,
+    "aide": "Règle de composition du numéro de lot et documents conservés."
+  },
+  "fab_reclamations": {
+    "libelleFr": "Réclamations et retraits",
+    "libelleEn": "Complaints and recalls",
+    "type": "texteLong",
+    "aide": "Conduite à tenir en cas de réclamation, d'effet indésirable ou de retrait de lot."
+  },
+  "fab_dechets": {
+    "libelleFr": "Gestion des déchets",
+    "libelleEn": "Waste management",
+    "type": "texteLong"
+  },
+  "fab_etapes": {
+    "libelleFr": "Étapes de fabrication",
+    "libelleEn": "Manufacturing steps",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "numero", "libelleFr": "Numéro", "libelleEn": "Step", "type": "texte" },
+      { "id": "operation", "libelleFr": "Opération", "libelleEn": "Operation", "type": "texte" },
+      { "id": "parametres", "libelleFr": "Paramètres", "libelleEn": "Parameters", "type": "texte" },
+      { "id": "controle", "libelleFr": "Contrôle réalisé", "libelleEn": "Control performed", "type": "texte" }
+    ],
+    "aide": "Décrivez le déroulement réel, avec les températures, durées et vitesses effectivement appliquées."
+  },
+  "fab_rendement": {
+    "libelleFr": "Rendement et quantité obtenue",
+    "libelleEn": "Yield and quantity obtained",
+    "type": "texte"
+  },
+  "cond_etapes": {
+    "libelleFr": "Étapes de conditionnement",
+    "libelleEn": "Packaging steps",
+    "type": "tableau",
+    "requis": true,
+    "colonnes": [
+      { "id": "numero", "libelleFr": "Numéro", "libelleEn": "Step", "type": "texte" },
+      { "id": "operation", "libelleFr": "Opération", "libelleEn": "Operation", "type": "texte" },
+      { "id": "controle", "libelleFr": "Contrôle réalisé", "libelleEn": "Control performed", "type": "texte" }
+    ]
+  },
+  "cond_etiquetage": {
+    "libelleFr": "Pose des étiquettes",
+    "libelleEn": "Label application",
+    "type": "texteLong",
+    "aide": "Vérification des mentions, du numéro de lot et de la date avant mise en carton."
+  },
+  "cond_controle_masse": {
+    "libelleFr": "Contrôle de la masse ou du volume",
+    "libelleEn": "Weight or volume control",
+    "type": "texteLong",
+    "aide": "Modalités de pesée, matériel utilisé, tolérance appliquée."
+  }
+}

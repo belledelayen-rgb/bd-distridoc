@@ -8,18 +8,29 @@ import { validerMatriceAvec } from '../src/data/regles.js';
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const lire = (chemin) => JSON.parse(readFileSync(join(racine, chemin), 'utf8'));
 
-const dictionnaires = {
-  communs: lire('src/data/champs/communs.json'),
-  produit: lire('src/data/champs/produit.json'),
-  matiere: lire('src/data/champs/matiere.json')
-};
-const documents = lire('src/data/documents.json');
+// Doit rester aligné sur src/data/index.js.
+const DOMAINES = [
+  'communs', 'produit', 'matiere', 'composition', 'emballage',
+  'signature', 'donnees', 'fabrication', 'revendications', 'administratif', 'fds'
+];
+const FAMILLES = [
+  'produit', 'composition', 'donnees', 'fabrication',
+  'revendications', 'administratif', 'assemblage'
+];
 
-const bilan = validerMatriceAvec(dictionnaires, documents);
+const dictionnaires = Object.fromEntries(
+  DOMAINES.map((d) => [d, lire(`src/data/champs/${d}.json`)])
+);
+const catalogues = Object.fromEntries(
+  FAMILLES.map((f) => [f, lire(`src/data/documents/${f}.json`)])
+);
+
+const bilan = validerMatriceAvec(dictionnaires, catalogues);
 
 console.log('Champs definis  :', bilan.statistiques.champs);
 console.log('Champs cites    :', bilan.statistiques.champsCites);
 console.log('Documents       :', bilan.statistiques.documents);
+console.log('Catalogues      :', bilan.statistiques.catalogues);
 
 if (bilan.avertissements.length) {
   console.log('\nAvertissements :');

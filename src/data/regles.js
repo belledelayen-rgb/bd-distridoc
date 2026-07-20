@@ -4,10 +4,10 @@ const TYPES_CONNUS = ['texte', 'texteLong', 'nombre', 'date', 'booleen', 'choix'
  * Contrôle de cohérence de la matrice de documents.
  * Fonction pure : elle ne lit aucun fichier et ne dépend d'aucune saisie utilisateur.
  * @param {Record<string, object>} dictionnaires domaine -> dictionnaire de champs
- * @param {object} documents catalogue des documents
+ * @param {Record<string, object>} catalogues famille -> catalogue de documents
  * @returns {{valide: boolean, erreurs: string[], avertissements: string[], statistiques: object}}
  */
-export function validerMatriceAvec(dictionnaires, documents) {
+export function validerMatriceAvec(dictionnaires, catalogues) {
   const erreurs = [];
   const avertissements = [];
 
@@ -52,7 +52,25 @@ export function validerMatriceAvec(dictionnaires, documents) {
     }
   }
 
-  // 3. Chaque document doit être complet et ne citer que des champs existants.
+  // 3. Un identifiant de document ne doit exister que dans un seul catalogue.
+  const documents = {};
+  const provenance = new Map();
+  for (const [fichier, catalogue] of Object.entries(catalogues)) {
+    for (const [idDoc, doc] of Object.entries(catalogue)) {
+      if (provenance.has(idDoc)) {
+        erreurs.push(`Document « ${idDoc} » défini deux fois : ${provenance.get(idDoc)} et ${fichier}.`);
+      } else {
+        provenance.set(idDoc, fichier);
+      }
+      // Le fichier porte le nom d'une famille : la famille déclarée doit correspondre.
+      if (doc.famille && doc.famille !== fichier) {
+        erreurs.push(`Document « ${idDoc} » : famille « ${doc.famille} » alors qu'il est rangé dans ${fichier}.`);
+      }
+      documents[idDoc] = doc;
+    }
+  }
+
+  // 4. Chaque document doit être complet et ne citer que des champs existants.
   const cites = new Set();
   for (const [idDoc, doc] of Object.entries(documents)) {
     if (!doc.titreFr || !doc.titreEn) {
@@ -79,7 +97,7 @@ export function validerMatriceAvec(dictionnaires, documents) {
     }
   }
 
-  // 4. Un champ défini mais jamais cité serait du code mort.
+  // 5. Un champ défini mais jamais cité serait du code mort.
   for (const id of Object.keys(champs)) {
     if (!cites.has(id)) {
       avertissements.push(`Champ « ${id} » défini mais cité par aucun document.`);
@@ -93,7 +111,8 @@ export function validerMatriceAvec(dictionnaires, documents) {
     statistiques: {
       champs: Object.keys(champs).length,
       champsCites: cites.size,
-      documents: Object.keys(documents).length
+      documents: Object.keys(documents).length,
+      catalogues: Object.keys(catalogues).length
     }
   };
 }

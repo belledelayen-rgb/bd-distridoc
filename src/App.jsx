@@ -1,12 +1,22 @@
 import { documents } from './data/index.js';
 
-const FAMILLES = {
-  produit: 'Produit',
-  composition: 'Composition et matières'
-};
+const FAMILLES = [
+  ['produit', 'Produit'],
+  ['composition', 'Composition et matières'],
+  ['donnees', 'Données'],
+  ['fabrication', 'Fabrication'],
+  ['revendications', 'Revendications'],
+  ['administratif', 'Administratif'],
+  ['assemblage', 'Assemblage']
+];
 
 export default function App() {
-  const liste = Object.entries(documents);
+  const parFamille = FAMILLES.map(([cle, libelle]) => [
+    libelle,
+    Object.entries(documents).filter(([, doc]) => doc.famille === cle)
+  ]).filter(([, liste]) => liste.length > 0);
+
+  const total = Object.keys(documents).length;
 
   return (
     <main className="page">
@@ -33,20 +43,23 @@ export default function App() {
 
       <section className="bloc">
         <h2>Documents disponibles</h2>
-        <ul className="liste-documents">
-          {liste.map(([id, doc]) => (
-            <li key={id}>
-              <span className="doc-titre">{doc.titreFr}</span>
-              <span className="doc-meta">
-                {FAMILLES[doc.famille] || doc.famille} · {doc.sections.length} sections
-              </span>
-              <span className="doc-en">{doc.titreEn}</span>
-            </li>
-          ))}
-        </ul>
+        <p className="note compteur">{total} documents repartis en {parFamille.length} familles.</p>
+        {parFamille.map(([libelle, liste]) => (
+          <div key={libelle} className="famille">
+            <h3>{libelle}</h3>
+            <ul className="liste-documents">
+              {liste.map(([id, doc]) => (
+                <li key={id}>
+                  <span className="doc-titre">{doc.titreFr}</span>
+                  <span className="doc-en">{doc.titreEn}</span>
+                  <span className="doc-meta">{doc.sections.length} sections</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
         <p className="note">
-          Le formulaire de saisie arrive au lot suivant. D&apos;autres documents
-          viendront completer ce catalogue.
+          Le formulaire de saisie arrive au lot suivant.
         </p>
       </section>
     </main>

@@ -23,8 +23,16 @@
     "type": "choix",
     "requis": true,
     "options": [
-      { "valeur": "sans_rincage", "libelleFr": "Sans rinçage", "libelleEn": "Leave-on" },
-      { "valeur": "a_rincer", "libelleFr": "À rincer", "libelleEn": "Rinse-off" }
+      {
+        "valeur": "sans_rincage",
+        "libelleFr": "Sans rinçage",
+        "libelleEn": "Leave-on"
+      },
+      {
+        "valeur": "a_rincer",
+        "libelleFr": "À rincer",
+        "libelleEn": "Rinse-off"
+      }
     ],
     "aide": "Détermine le seuil de déclaration des allergènes : 0,001 % sans rinçage, 0,01 % à rincer."
   },
@@ -104,8 +112,19 @@
     "libelleEn": "Allergens to be declared",
     "type": "tableau",
     "colonnes": [
-      { "id": "nom_inci", "libelleFr": "Nom INCI", "libelleEn": "INCI name", "type": "texte" },
-      { "id": "concentration", "libelleFr": "Concentration", "libelleEn": "Concentration", "type": "nombre", "unite": "%" }
+      {
+        "id": "nom_inci",
+        "libelleFr": "Nom INCI",
+        "libelleEn": "INCI name",
+        "type": "texte"
+      },
+      {
+        "id": "concentration",
+        "libelleFr": "Concentration",
+        "libelleEn": "Concentration",
+        "type": "nombre",
+        "unite": "%"
+      }
     ],
     "aide": "N'indiquez que les allergènes dépassant le seuil de déclaration applicable."
   },
@@ -123,5 +142,32 @@
     "libelleFr": "Date de fabrication",
     "libelleEn": "Date of manufacture",
     "type": "date"
+  },
+  "produit_fonction": {
+    "libelleFr": "Fonction du produit",
+    "libelleEn": "Product function",
+    "type": "texte",
+    "aide": "Obligatoire sur l'étiquette, sauf si elle ressort clairement de la présentation du produit (art. 19)."
+  },
+  "produit_pays_origine": {
+    "libelleFr": "Pays d'origine",
+    "libelleEn": "Country of origin",
+    "type": "texte",
+    "aide": "À mentionner sur l'étiquette pour les produits importés dans l'Union européenne."
+  },
+  "produit_conditionnement": {
+    "libelleFr": "Conditionnement",
+    "libelleEn": "Packaging",
+    "type": "texte"
+  },
+  "produit_conservation": {
+    "libelleFr": "Conditions de conservation",
+    "libelleEn": "Storage conditions",
+    "type": "texteLong"
+  },
+  "produit_densite": {
+    "libelleFr": "Densité",
+    "libelleEn": "Density",
+    "type": "nombre"
   }
 }
