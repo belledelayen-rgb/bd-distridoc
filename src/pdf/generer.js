@@ -1,4 +1,5 @@
 import { construireDefinition } from './definition.js';
+import { construireDossier, titreDossier } from './dossier.js';
 
 let pdfMakePromesse = null;
 
@@ -36,4 +37,11 @@ export async function telechargerDocument(document, champs, valeurs, options = {
   const definition = construireDefinition(document, champs, valeurs, options);
   const pdfMake = await chargerPdfMake();
   pdfMake.createPdf(definition).download(nomFichier(document.titreFr));
+}
+
+/** Construit puis télécharge un dossier réunissant plusieurs documents. */
+export async function telechargerDossier(idsDocuments, documents, champs, valeurs, options = {}) {
+  const definition = construireDossier(idsDocuments, documents, champs, valeurs, options);
+  const pdfMake = await chargerPdfMake();
+  pdfMake.createPdf(definition).download(nomFichier(titreDossier(valeurs)));
 }

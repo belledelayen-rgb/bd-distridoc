@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { champs, documents, champsRegroupes, champsManquants } from '../data/index.js';
-import { telechargerDocument } from '../pdf/generer.js';
+import { telechargerDocument, telechargerDossier } from '../pdf/generer.js';
 import Champ from './Champ.jsx';
+
+/** Repère interne du bouton « dossier », distinct de tout identifiant de document. */
+const DOSSIER = '__dossier__';
 
 /** Formulaire construit à partir des documents choisis. */
 export default function Formulaire({ documentsChoisis, saisie }) {
@@ -19,6 +22,17 @@ export default function Formulaire({ documentsChoisis, saisie }) {
     setEnCours(idDoc);
     try {
       await telechargerDocument(documents[idDoc], champs, saisie.valeurs, {
+        logo: saisie.valeurs.demandeur_logo || undefined
+      });
+    } finally {
+      setEnCours(null);
+    }
+  };
+
+  const produireDossier = async () => {
+    setEnCours(DOSSIER);
+    try {
+      await telechargerDossier(documentsChoisis, documents, champs, saisie.valeurs, {
         logo: saisie.valeurs.demandeur_logo || undefined
       });
     } finally {
@@ -69,6 +83,31 @@ export default function Formulaire({ documentsChoisis, saisie }) {
         <p className="note">
           Chaque document reprend uniquement les renseignements que vous avez
           saisis. Les rubriques laissées vides ne sont pas imprimées.
+        </p>
+
+        {documentsChoisis.length > 1 && (
+          <div className="production-dossier">
+            <button
+              type="button"
+              className="bouton-principal"
+              disabled={enCours !== null}
+              onClick={produireDossier}
+            >
+              {enCours === DOSSIER
+                ? 'Préparation du dossier…'
+                : `Télécharger le dossier complet (${documentsChoisis.length} documents)`}
+            </button>
+            <p className="note">
+              Un seul fichier PDF réunissant vos {documentsChoisis.length}{' '}
+              documents, avec un sommaire qui indique la page de chacun.
+            </p>
+          </div>
+        )}
+
+        <p className="note">
+          {documentsChoisis.length > 1
+            ? 'Ou téléchargez les documents un par un :'
+            : 'Téléchargez votre document :'}
         </p>
         <div className="barre-boutons">
           {documentsChoisis.map((idDoc) => (

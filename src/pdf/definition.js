@@ -13,7 +13,7 @@
  * - l'en-tête et le pied sont répétés, la numérotation est « page x/y ».
  */
 
-const COULEURS = {
+export const COULEURS = {
   encre: '#2b2a28',
   discret: '#6b665e',
   vert: '#2e6b4f',
@@ -23,7 +23,7 @@ const COULEURS = {
   filet: '#d9d2c5'
 };
 
-const MENTION_PIED =
+export const MENTION_PIED =
   "Généré automatiquement à partir des seules informations saisies par l'utilisateur, "
   + "qui en demeure responsable. Aucune évaluation de la sécurité n'est réalisée.";
 
@@ -182,7 +182,12 @@ function bandeauSection(section) {
   };
 }
 
-function construireCorps(document, champs, valeurs) {
+/**
+ * Corps d'un document : la suite de ses sections renseignées.
+ * Exporté pour que le dossier fusionné réutilise exactement la même mise en
+ * page que le document produit seul.
+ */
+export function construireCorps(document, champs, valeurs) {
   const corps = [];
 
   for (const section of document.sections || []) {
@@ -199,6 +204,32 @@ function construireCorps(document, champs, valeurs) {
   }
 
   return corps;
+}
+
+/** Style de base et jeu de styles, communs au document seul et au dossier. */
+export const STYLE_DEFAUT = {
+  font: 'Roboto', fontSize: 9, lineHeight: 1.15, color: COULEURS.encre
+};
+
+export const STYLES = {
+  titre: { fontSize: 14, bold: true, color: COULEURS.vert },
+  titreEn: { fontSize: 8, italics: true, color: COULEURS.discret },
+  libelle: { fontSize: 8 },
+  valeur: { fontSize: 9 },
+  enteteTableau: { fontSize: 7.5, bold: true, color: COULEURS.encre },
+  celluleTableau: { fontSize: 8.5 },
+  pied: { fontSize: 6, color: COULEURS.discret }
+};
+
+/** Pied de page répété : mention unique à gauche, numérotation à droite. */
+export function piedDePage(page, total) {
+  return {
+    margin: [38, 4, 38, 0],
+    columns: [
+      { width: '*', text: MENTION_PIED, style: 'pied' },
+      { width: 46, text: `page ${page}/${total}`, style: 'pied', alignment: 'right' }
+    ]
+  };
 }
 
 /**
@@ -231,28 +262,13 @@ export function construireDefinition(document, champs, valeurs, options = {}) {
       ]
     }),
 
-    footer: (page, total) => ({
-      margin: [38, 4, 38, 0],
-      columns: [
-        { width: '*', text: MENTION_PIED, style: 'pied' },
-        { width: 46, text: `page ${page}/${total}`, style: 'pied', alignment: 'right' }
-      ]
-    }),
+    footer: piedDePage,
 
     content: corps.length > 0
       ? corps
       : [{ text: 'Aucun renseignement saisi pour ce document.', style: 'valeur' }],
 
-    defaultStyle: { font: 'Roboto', fontSize: 9, lineHeight: 1.15, color: COULEURS.encre },
-
-    styles: {
-      titre: { fontSize: 14, bold: true, color: COULEURS.vert },
-      titreEn: { fontSize: 8, italics: true, color: COULEURS.discret },
-      libelle: { fontSize: 8 },
-      valeur: { fontSize: 9 },
-      enteteTableau: { fontSize: 7.5, bold: true, color: COULEURS.encre },
-      celluleTableau: { fontSize: 8.5 },
-      pied: { fontSize: 6, color: COULEURS.discret }
-    }
+    defaultStyle: STYLE_DEFAUT,
+    styles: STYLES
   };
 }
