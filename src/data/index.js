@@ -1,4 +1,4 @@
-import communs from './champs/communs.json';
+import entreprise from './champs/entreprise.json';
 import produit from './champs/produit.json';
 import matiere from './champs/matiere.json';
 import composition from './champs/composition.json';
@@ -9,6 +9,7 @@ import fabrication from './champs/fabrication.json';
 import revendications from './champs/revendications.json';
 import administratif from './champs/administratif.json';
 import fds from './champs/fds.json';
+import docChamps from './champs/document.json';
 
 import { regrouperChamps, trouverManquants, indexerDomaines } from './regles.js';
 
@@ -23,9 +24,12 @@ import docAssemblage from './documents/assemblage.json';
 // Dictionnaires de champs, par domaine.
 // Ajouter ici tout nouveau domaine, et la ligne correspondante dans
 // scripts/verifier-matrice.mjs.
+// L'ordre de déclaration fait l'ordre d'affichage du formulaire : on part de
+// l'entreprise, on traverse le métier, on finit par la signature et le document.
 export const dictionnaires = {
-  communs, produit, matiere, composition, emballage,
-  signature, donnees, fabrication, revendications, administratif, fds
+  entreprise, produit, matiere, composition, emballage,
+  donnees, fabrication, revendications, administratif, fds,
+  signature, document: docChamps
 };
 
 // Catalogues de documents, par famille. Le nom de la clé fait foi :
@@ -47,7 +51,7 @@ const indexDomaines = indexerDomaines(dictionnaires);
 
 // Libellés lisibles des domaines de champs, pour regrouper la saisie.
 export const LIBELLES_DOMAINES = {
-  communs: 'Vos coordonnées et le document',
+  entreprise: 'Votre entreprise',
   produit: 'Le produit',
   matiere: 'La matière première',
   composition: 'La composition',
@@ -57,7 +61,8 @@ export const LIBELLES_DOMAINES = {
   fabrication: 'La fabrication',
   revendications: 'Les revendications',
   administratif: 'Les démarches administratives',
-  fds: 'La fiche de données de sécurité'
+  fds: 'La fiche de données de sécurité',
+  document: 'Établissement du document'
 };
 
 /** Domaine auquel appartient un champ. */

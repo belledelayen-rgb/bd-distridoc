@@ -14,7 +14,7 @@
   "demandeur_adresse": {
     "libelleFr": "Adresse complète",
     "libelleEn": "Full address",
-    "type": "texteLong",
+    "type": "texteCourt",
     "requis": true
   },
   "demandeur_pays": {
@@ -45,26 +45,5 @@
     "libelleEn": "Logo (document header)",
     "type": "fichier",
     "aide": "Image PNG ou JPEG. Reste dans votre navigateur, n'est jamais transmise."
-  },
-  "document_reference": {
-    "libelleFr": "Référence du document",
-    "libelleEn": "Document reference",
-    "type": "texte"
-  },
-  "document_version": {
-    "libelleFr": "Version",
-    "libelleEn": "Version",
-    "type": "texte"
-  },
-  "document_date": {
-    "libelleFr": "Date d'établissement",
-    "libelleEn": "Date of issue",
-    "type": "date",
-    "requis": true
-  },
-  "document_redacteur": {
-    "libelleFr": "Rédigé par",
-    "libelleEn": "Drawn up by",
-    "type": "texte"
   }
 }
