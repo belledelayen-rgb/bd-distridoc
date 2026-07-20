@@ -3,6 +3,10 @@
 Outil autonome et public de génération de documents professionnels au format PDF,
 à partir des seules informations saisies par l'utilisateur.
 
+Le catalogue actuel couvre les **produits cosmétiques**. Deux autres catégories
+sont prévues et feront chacune l'objet d'un catalogue distinct : les
+**détergents** et les **bougies**. Elles ne sont pas implémentées.
+
 ## Principe
 
 L'outil **met en forme les données saisies**. Il n'invente rien, ne suppose rien
@@ -45,7 +49,9 @@ npm run verifier # contrôle de la matrice seul
 ## Hors périmètre
 
 Comptes utilisateurs, stockage serveur, versionnage, journal d'audit, base de
-données. Catégories détergent et bougie prévues, non implémentées en v1.
+données. Les catégories détergents et bougies sont prévues, elles ne sont pas
+implémentées en v1 : les 23 documents du catalogue actuel s'adressent
+exclusivement aux produits cosmétiques.
 
 Toujours exclus : le RSPC et toute conclusion d'évaluation de la sécurité.
 L'outil ne qualifie pas non plus la conformité d'un document à une exigence
