@@ -59,7 +59,8 @@
         "id": "nom_inci",
         "libelleFr": "Nom INCI",
         "libelleEn": "INCI name",
-        "type": "texte"
+        "type": "texte",
+        "suggestions": "ingredients_inci"
       },
       {
         "id": "origine",
@@ -75,7 +76,7 @@
         "unite": "%"
       }
     ],
-    "aide": "Plusieurs huiles de support sont possibles. La somme des proportions doit être cohérente avec la formule."
+    "aide": "Huiles servant de support au macérat. Les correspondances proposées viennent du référentiel interne de la savonnerie. Elles sont purement indicatives et ne remplacent pas la vérification dans la base CosIng de la Commission européenne. Vous pouvez saisir une dénomination qui n'y figure pas."
   },
   "matiere_plantes": {
     "libelleFr": "Plantes mises à macérer",
@@ -87,7 +88,8 @@
         "id": "nom_commun",
         "libelleFr": "Nom commun",
         "libelleEn": "Common name",
-        "type": "texte"
+        "type": "texte",
+        "suggestions": "ingredients_nom"
       },
       {
         "id": "nom_botanique",
@@ -121,7 +123,7 @@
         "unite": "%"
       }
     ],
-    "aide": "Plusieurs plantes sont possibles. Précisez l'état : frais, séché, stabilisé."
+    "aide": "Plusieurs plantes sont possibles. Précisez l'état : frais, séché, stabilisé. Les correspondances proposées viennent du référentiel interne de la savonnerie. Elles sont purement indicatives et ne remplacent pas la vérification dans la base CosIng de la Commission européenne. Vous pouvez saisir une dénomination qui n'y figure pas."
   },
   "matiere_procede": {
     "libelleFr": "Procédé de macération",
