@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { validerMatriceAvec } from '../src/data/regles.js';
+import { assemblerReferentiels } from '../src/data/referentiels/assembler.js';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const lire = (chemin) => JSON.parse(readFileSync(join(racine, chemin), 'utf8'));
@@ -18,7 +19,8 @@ const FAMILLES = [
   'produit', 'composition', 'donnees', 'fabrication',
   'revendications', 'administratif', 'assemblage'
 ];
-const REFERENTIELS = ['allergenes'];
+// Catalogues d'ingredients, alignes sur src/data/index.js.
+const INGREDIENTS = ['corps-gras', 'senteurs', 'additifs', 'colorants'];
 
 const dictionnaires = Object.fromEntries(
   DOMAINES.map((d) => [d, lire(`src/data/champs/${d}.json`)])
@@ -26,8 +28,9 @@ const dictionnaires = Object.fromEntries(
 const catalogues = Object.fromEntries(
   FAMILLES.map((f) => [f, lire(`src/data/documents/${f}.json`)])
 );
-const referentiels = Object.fromEntries(
-  REFERENTIELS.map((r) => [r, lire(`src/data/referentiels/${r}.json`)])
+const referentiels = assemblerReferentiels(
+  lire('src/data/referentiels/allergenes.json'),
+  INGREDIENTS.map((i) => lire(`src/data/referentiels/ingredients-${i}.json`))
 );
 
 const bilan = validerMatriceAvec(dictionnaires, catalogues, referentiels);
@@ -36,7 +39,9 @@ console.log('Champs definis  :', bilan.statistiques.champs);
 console.log('Champs cites    :', bilan.statistiques.champsCites);
 console.log('Documents       :', bilan.statistiques.documents);
 console.log('Catalogues      :', bilan.statistiques.catalogues);
-console.log('Referentiels    :', Object.keys(referentiels).length);
+for (const [nom, ref] of Object.entries(referentiels)) {
+  console.log(`Referentiel ${nom.padEnd(17)}:`, ref.entrees.length, 'propositions');
+}
 
 if (bilan.avertissements.length) {
   console.log('\nAvertissements :');

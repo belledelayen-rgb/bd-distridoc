@@ -5,16 +5,59 @@
     "type": "tableau",
     "requis": true,
     "colonnes": [
-      { "id": "nom_inci", "libelleFr": "Nom INCI", "libelleEn": "INCI name", "type": "texte" },
-      { "id": "nom_commun", "libelleFr": "Nom commun", "libelleEn": "Common name", "type": "texte" },
-      { "id": "fonction", "libelleFr": "Fonction", "libelleEn": "Function", "type": "texte" },
-      { "id": "cas", "libelleFr": "Numéro CAS", "libelleEn": "CAS number", "type": "texte" },
-      { "id": "ce", "libelleFr": "Numéro CE", "libelleEn": "EC number", "type": "texte" },
-      { "id": "pourcentage", "libelleFr": "Teneur", "libelleEn": "Content", "type": "nombre", "unite": "%" },
-      { "id": "fournisseur", "libelleFr": "Fournisseur", "libelleEn": "Supplier", "type": "texte" },
-      { "id": "lot", "libelleFr": "Numéro de lot", "libelleEn": "Batch number", "type": "texte" }
+      {
+        "id": "nom_inci",
+        "libelleFr": "Nom INCI",
+        "libelleEn": "INCI name",
+        "type": "texte",
+        "suggestions": "ingredients_inci"
+      },
+      {
+        "id": "nom_commun",
+        "libelleFr": "Nom commun",
+        "libelleEn": "Common name",
+        "type": "texte",
+        "suggestions": "ingredients_nom"
+      },
+      {
+        "id": "fonction",
+        "libelleFr": "Fonction",
+        "libelleEn": "Function",
+        "type": "texte"
+      },
+      {
+        "id": "cas",
+        "libelleFr": "Numéro CAS",
+        "libelleEn": "CAS number",
+        "type": "texte"
+      },
+      {
+        "id": "ce",
+        "libelleFr": "Numéro CE",
+        "libelleEn": "EC number",
+        "type": "texte"
+      },
+      {
+        "id": "pourcentage",
+        "libelleFr": "Teneur",
+        "libelleEn": "Content",
+        "type": "nombre",
+        "unite": "%"
+      },
+      {
+        "id": "fournisseur",
+        "libelleFr": "Fournisseur",
+        "libelleEn": "Supplier",
+        "type": "texte"
+      },
+      {
+        "id": "lot",
+        "libelleFr": "Numéro de lot",
+        "libelleEn": "Batch number",
+        "type": "texte"
+      }
     ],
-    "aide": "Une ligne par matière première. Les numéros CAS et CE se saisissent d'après CosIng."
+    "aide": "Une ligne par matière première. Les numéros CAS et CE se saisissent d'après CosIng. Les correspondances proposées viennent du référentiel interne de la savonnerie. Elles sont purement indicatives et ne remplacent pas la vérification dans la base CosIng de la Commission européenne. Vous pouvez saisir une dénomination qui n'y figure pas."
   },
   "composition_observations": {
     "libelleFr": "Observations sur la formule",
