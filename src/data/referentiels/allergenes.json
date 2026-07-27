@@ -70,7 +70,7 @@
     { "n": 347, "nom": "Cananga Odorata Oil/Extract", "type": "botanique" },
     { "n": 348, "nom": "Cinnamomum Cassia Leaf Oil", "type": "botanique" },
     { "n": 349, "nom": "Cinnamomum Zeylanicum Bark Oil", "type": "botanique" },
-    { "n": 350, "nom": "Citrus Aurantium Dulcis", "type": "botanique", "precision": "fleurs" },
+    { "n": 350, "nom": "Citrus Aurantium Flower Oil", "type": "botanique", "precision": "fleurs d'oranger amer (néroli) et doux" },
     { "n": 351, "nom": "Citrus Aurantium Amara/Dulcis", "type": "botanique", "precision": "zestes" },
     { "n": 352, "nom": "Citrus Aurantium Bergamia", "type": "botanique", "precision": "bergamote" },
     { "n": 353, "nom": "Citrus Limon", "type": "botanique" },
