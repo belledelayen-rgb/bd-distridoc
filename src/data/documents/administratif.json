@@ -189,14 +189,6 @@
         ]
       },
       {
-        "titreFr": "Produit concerné",
-        "titreEn": "Product concerned",
-        "champs": [
-          "produit_nom",
-          "produit_gamme"
-        ]
-      },
-      {
         "titreFr": "Portée",
         "titreEn": "Scope",
         "champs": [

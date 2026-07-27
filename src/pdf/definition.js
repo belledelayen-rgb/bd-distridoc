@@ -56,12 +56,22 @@ export function valeurAffichable(definition, valeur) {
   return String(valeur);
 }
 
-/** Libellé bilingue sur une seule ligne, avec l'unité s'il y en a une. */
-export function libelleBilingue(definition) {
+/**
+ * Libellé bilingue en TEXTE PUR, avec l'unité s'il y en a une.
+ * Source de vérité unique : le PDF et le Word s'en servent tous les deux, afin
+ * qu'un même champ ne porte jamais deux libellés selon le format demandé.
+ */
+export function libelleTexte(definition) {
   const unite = definition.unite ? ` (${definition.unite})` : '';
+  return { fr: definition.libelleFr + unite, en: definition.libelleEn };
+}
+
+/** Libellé bilingue sur une seule ligne, mis en forme pour le PDF. */
+export function libelleBilingue(definition) {
+  const { fr, en } = libelleTexte(definition);
   return [
-    { text: definition.libelleFr + unite, bold: true },
-    { text: ` / ${definition.libelleEn}`, italics: true, color: COULEURS.discret }
+    { text: fr, bold: true },
+    { text: ` / ${en}`, italics: true, color: COULEURS.discret }
   ];
 }
 

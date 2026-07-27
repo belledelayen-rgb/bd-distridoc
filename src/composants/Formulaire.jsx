@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { champs, documents, champsRegroupes, champsManquants } from '../data/index.js';
 import { telechargerDocument, telechargerDossier } from '../pdf/generer.js';
+import { telechargerWord } from '../word/generer-word.js';
 import Champ from './Champ.jsx';
 import PiecesJointes from './PiecesJointes.jsx';
 
@@ -12,6 +13,9 @@ export default function Formulaire({
   documentsChoisis, saisie, pieces = [], ajouterPiece, retirerPiece
 }) {
   const [enCours, setEnCours] = useState(null);
+  // Le PDF reste le format par défaut : mise en page définitive, dossier fusionné,
+  // pièces jointes. Le Word répond au seul besoin de retoucher un document.
+  const [format, setFormat] = useState('pdf');
   const groupes = champsRegroupes(documentsChoisis);
   const manquants = champsManquants(documentsChoisis, saisie.valeurs);
   const total = groupes.reduce((n, g) => n + g.champs.length, 0);
@@ -34,10 +38,13 @@ export default function Formulaire({
 
   const produire = async (idDoc) => {
     setEnCours(idDoc);
+    const options = { logo: saisie.valeurs.demandeur_logo || undefined };
     try {
-      await telechargerDocument(documents[idDoc], champs, saisie.valeurs, {
-        logo: saisie.valeurs.demandeur_logo || undefined
-      });
+      if (format === 'word') {
+        await telechargerWord(documents[idDoc], champs, saisie.valeurs, options);
+      } else {
+        await telechargerDocument(documents[idDoc], champs, saisie.valeurs, options);
+      }
     } finally {
       setEnCours(null);
     }
@@ -125,11 +132,38 @@ export default function Formulaire({
           </div>
         )}
 
-        <p className="note">
-          {dossierPossible
-            ? 'Ou téléchargez les documents un par un :'
-            : 'Téléchargez votre document :'}
-        </p>
+        <div className="choix-format">
+          <p className="note">
+            {dossierPossible
+              ? 'Ou téléchargez les documents un par un, au format de votre choix :'
+              : 'Téléchargez votre document, au format de votre choix :'}
+          </p>
+          <div className="barre-format">
+            <button
+              type="button"
+              className={format === 'pdf' ? 'format-actif' : 'format-inactif'}
+              aria-pressed={format === 'pdf'}
+              disabled={enCours !== null}
+              onClick={() => setFormat('pdf')}
+            >
+              PDF
+            </button>
+            <button
+              type="button"
+              className={format === 'word' ? 'format-actif' : 'format-inactif'}
+              aria-pressed={format === 'word'}
+              disabled={enCours !== null}
+              onClick={() => setFormat('word')}
+            >
+              Word
+            </button>
+          </div>
+          <p className="note">
+            {format === 'pdf'
+              ? 'Le PDF fige la mise en page. C’est le format à joindre à un dossier.'
+              : 'Le Word (.docx) s’ouvre dans un traitement de texte et se modifie librement, si vous devez retoucher une mention sans tout ressaisir.'}
+          </p>
+        </div>
         <div className="barre-boutons">
           {documentsChoisis.map((idDoc) => (
             <button

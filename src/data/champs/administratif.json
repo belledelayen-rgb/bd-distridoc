@@ -79,7 +79,7 @@
     "libelleEn": "Scope of the attestation",
     "type": "texteLong",
     "requis": true,
-    "aide": "Document interne au dossier (art. 11). Ne jamais reprendre cette mention comme allégation sur l'étiquette ou la publicité (art. 20 et règlement UE 655/2013)."
+    "aide": "Indiquez ce que l'attestation couvre. Elle peut viser l'ensemble des produits finis fabriqués sur une période, sans nommer de produit particulier, ou bien un produit précis si vous le souhaitez. Document interne au dossier (art. 11). Ne jamais reprendre cette mention comme allégation sur l'étiquette ou la publicité (art. 20 et règlement UE 655/2013)."
   },
   "dossier_titre": {
     "libelleFr": "Titre du dossier",
