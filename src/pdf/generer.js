@@ -22,15 +22,18 @@ function chargerPdfMake() {
   return pdfMakePromesse;
 }
 
-/** Nom de fichier lisible, sans accent ni caractère problématique. */
-export function nomFichier(titre, date = new Date()) {
+/**
+ * Nom de fichier lisible, sans accent ni caractère problématique.
+ * L'extension vaut « pdf » par défaut : les appels existants sont inchangés.
+ */
+export function nomFichier(titre, date = new Date(), extension = 'pdf') {
   const base = titre
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .slice(0, 60);
-  return `${base}-${date.toISOString().slice(0, 10)}.pdf`;
+  return `${base}-${date.toISOString().slice(0, 10)}.${extension}`;
 }
 
 /** Construit puis télécharge le PDF d'un document. */

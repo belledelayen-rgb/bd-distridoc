@@ -129,3 +129,36 @@
   font-style: italic;
   margin: 0.3rem 0 0.5rem;
 }
+
+/* ─── Choix du format de production : PDF figé ou Word modifiable ─── */
+
+.choix-format { margin: 1rem 0 0.25rem; }
+
+.choix-format .note { margin: 0 0 0.45rem; }
+
+.barre-format {
+  display: inline-flex;
+  border: 1px solid var(--vert);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barre-format button {
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.4rem 1.1rem;
+  border: 0;
+  cursor: pointer;
+  transition: filter 0.12s;
+}
+
+.barre-format button + button { border-left: 1px solid var(--vert); }
+
+.format-actif { background: var(--vert); color: #fff; }
+
+.format-inactif { background: #fff; color: var(--vert); }
+
+.barre-format button:hover:not(:disabled) { filter: brightness(1.08); }
+
+.barre-format button:disabled { cursor: default; opacity: 0.55; }
